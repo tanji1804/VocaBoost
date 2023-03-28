@@ -1,7 +1,0 @@
-単語帳アプリ　「VocaBoost」
-
-友人「英単語帳をスキャンして、それをベースに暗記カードみたいなクイズアプリがあったらいいなーと」
-
-名前の由来　chatGPTに出してもらった、「vocabulary　boost」をいじったもの。
-
-Google Cloud Vision API を使って単語帳をスキャン？
