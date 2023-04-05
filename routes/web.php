@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+// BookController
+use App\Http\Controllers\BookController;
+Route::controller(BookController::class)->group(function(){
+    Route::get('book/edit', 'edit')->name('book.edit');
+    Route::post('book/edit', 'update')->name('book.update');
+    Route::get('book/delete', 'delete')->name('book.delete');
+});
