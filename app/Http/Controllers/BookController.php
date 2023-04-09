@@ -22,7 +22,7 @@ class BookController extends Controller
     //  edit book
     public function edit()
     {
-        
+        return view('book.edit');
     }
     
     // update book
