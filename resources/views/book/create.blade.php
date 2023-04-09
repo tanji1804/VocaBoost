@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','単語帳の作成')
+@section('title',__('messages.create_book'))
 
 @section('content')
     create book
