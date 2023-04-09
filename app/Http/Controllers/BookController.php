@@ -7,6 +7,12 @@ use App\Http\Controllers\Controller;
 
 class BookController extends Controller
 {
+    // index
+    public function index()
+    {
+        return view('book.index');
+    }
+    
     // add book
     public function add()
     {
@@ -16,7 +22,7 @@ class BookController extends Controller
     // create book
     public function create(Request $request)
     {
-        return redirect('book/crete');
+        return redirect('book');
     }
     
     //  edit book

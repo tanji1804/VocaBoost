@@ -21,6 +21,7 @@ Route::get('/', function () {
 // BookController
 use App\Http\Controllers\BookController;
 Route::controller(BookController::class)->prefix('book')->name('book.')->middleware('auth')->group(function(){
+    Route::get('', 'index')->name('index');
     Route::get('create', 'add')->name('add');
     Route::post('create','create')->name('create');
     Route::get('edit', 'edit')->name('edit');
