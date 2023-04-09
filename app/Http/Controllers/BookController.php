@@ -16,7 +16,7 @@ class BookController extends Controller
     // create book
     public function create(Request $request)
     {
-        
+        return redirect('book/crete');
     }
     
     //  edit book

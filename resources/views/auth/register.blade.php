@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title',__('messages.register') )
+@section('title',__('messages.user_register') )
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('messages.register') }}</div>
+                <div class="card-header">{{ __('messages.user_register') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -65,7 +65,7 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('messages.register') }}
+                                    {{ __('messages.user_register') }}
                                 </button>
                             </div>
                         </div>

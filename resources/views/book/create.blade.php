@@ -3,6 +3,9 @@
 @section('title',__('messages.create_book'))
 
 @section('content')
-    create book
+    <form>
+        <input type="text" id="book_name">
+        <input type="submit" value="{{ __('messages.register') }}">
+    </form>
     
 @endsection
