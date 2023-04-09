@@ -20,8 +20,13 @@ Route::get('/', function () {
 
 // BookController
 use App\Http\Controllers\BookController;
-Route::controller(BookController::class)->group(function(){
-    Route::get('book/edit', 'edit')->name('book.edit');
-    Route::post('book/edit', 'update')->name('book.update');
-    Route::get('book/delete', 'delete')->name('book.delete');
+Route::controller(BookController::class)->prefix('book')->name('book.')->group(function(){
+    Route::get('create', 'add')->name('add');
+    Route::post('create','create')->name('create');
+    Route::get('edit', 'edit')->name('edit');
+    Route::post('edit', 'update')->name('update');
+    Route::get('delete', 'delete')->name('delete');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
