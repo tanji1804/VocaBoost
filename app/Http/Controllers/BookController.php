@@ -13,16 +13,10 @@ class BookController extends Controller
         return view('book.index');
     }
     
-    // add book
-    public function add()
-    {
-        return view('book.create');
-    }
-    
     // create book
     public function create(Request $request)
     {
-        return redirect('book');
+        return redirect('/');
     }
     
     //  edit book
