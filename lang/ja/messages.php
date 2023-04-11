@@ -3,6 +3,7 @@
 return [
     'login' => 'ログイン',
     'logout' => 'ログアウト',
+    'logged_in' => 'ログイン完了',
     'email' => 'メールアドレス',
     'password' => 'パスワード',
     'remember_me' => 'ログイン情報を記憶する',
