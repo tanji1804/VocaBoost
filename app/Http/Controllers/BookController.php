@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
+use App\Http\Requests\BookRequest;
 
 
 class BookController extends Controller
@@ -17,7 +18,7 @@ class BookController extends Controller
     }
     
     // create book
-    public function create(Request $request)
+    public function create(BookRequest $request)
     {
         $this->validate($request, Book::$rules);
         
