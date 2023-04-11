@@ -4,7 +4,7 @@
 @section('content')
     <script>
  
-function confirm_test() { // 問い合わせるボタンをクリックした場合
+function popup() { // 問い合わせるボタンをクリックした場合
     document.getElementById('popup').style.display = 'block';
     return false;
 }
@@ -19,16 +19,19 @@ function nofunc() { // キャンセルをクリックした場合
 </script>
 @auth
     <div >
-    <form method="POST" name="contactform" action="{{ route('book.create') }}">
+    <form>
         @csrf
-        <input type="submit" value="+" name="contact" onclick="return confirm_test()" />
+        <input type="button" value="+" name="create_book_button" onclick="return popup()" />
     </form>
      
     <div id="popup" style="width: 200px;display: none;padding: 30px 20px;border: 2px solid #000;margin: auto;">
         <br />
-        <input type="text" name="user_name" value="" />
-        <button id="ok" onclick="okfunc()">OK</button>
-        <button id="no" onclick="nofunc()">キャンセル</button>
+        <form method="POST" action="{{ route('book.create') }}">
+            @csrf
+            <input type="text" name="book_name" value="{{ old('book_name') }}" />
+            <input type="submit" id="ok" onclick="okfunc()" value="登録" />
+            <button id="no" onclick="nofunc()">キャンセル</button>
+        </form>
     </div>
 @endauth
 
