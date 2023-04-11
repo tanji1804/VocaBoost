@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title',__('messages.create_book'))
+@section('title',config('app.name','VocaBoost').' '.__('messages.create_book'))
 
 @section('content')
     <form action="{{ route('book.create') }}" method="post">

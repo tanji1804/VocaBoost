@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title',__('messages.edit_book'))
+@section('title',config('app.name','VocaBoost').' '.__('messages.edit_book'))
 @section('content')
     edit book
     

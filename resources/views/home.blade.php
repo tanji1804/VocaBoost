@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title',__('messages.login'))
+@section('title',config('app.name','VocaBoost').' '.__('messages.login'))
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

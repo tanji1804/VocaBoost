@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title',__('messages.book'))
+@section('title',config('app.name','VocaBoost').__('messages.book'))
 @section('content')
     index
     
