@@ -22,19 +22,15 @@ class BookController extends Controller
     {
         $this->validate($request, Book::$rules);
         
-        $book = new Book;
+        $books = new Book;
         $form = $request->all();
         $form += array('user_id' => Auth::id());
         
-        // if($form['book_name'] === null){
-        //     $form['book_name'] = 'untitled';
-        // }
-        
         
         unset($form['_token']);
-        // dd($form);
-        $book->fill($form);
-        $book->save();
+        // dd($books);
+        $books->fill($form);
+        $books->save();
         
         return redirect('/');
     }
