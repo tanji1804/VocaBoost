@@ -13,10 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+// TopController
+Route::get('/', [App\Http\Controllers\TopController::class, 'index'])->name('top');
 
 // BookController
 use App\Http\Controllers\BookController;
@@ -27,6 +25,8 @@ Route::controller(BookController::class)->prefix('book')->name('book.')->middlew
     Route::post('edit', 'update')->name('update');
     Route::get('delete', 'delete')->name('delete');
 });
+
 Auth::routes();
 
+// HomeController
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
