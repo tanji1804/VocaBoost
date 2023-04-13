@@ -12,7 +12,6 @@ class TopController extends Controller
     {
         $all_books = Book::all();
         
-        
         return view('welcome', ['all_books' => $all_books]);
     }
 }
