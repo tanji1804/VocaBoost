@@ -26,9 +26,8 @@ class BookController extends Controller
         $form = $request->all();
         $form += array('user_id' => Auth::id());
         
-        
         unset($form['_token']);
-        // dd($books);
+        
         $books->fill($form);
         $books->save();
         
@@ -38,7 +37,7 @@ class BookController extends Controller
     //  edit book
     public function edit()
     {
-        return view('book.edit');
+        
     }
     
     // update book
