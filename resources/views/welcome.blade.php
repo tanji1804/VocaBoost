@@ -18,15 +18,21 @@ function nofunc() { // キャンセルをクリックした場合
 }
 </script>
 
-<div>
-    @foreach($all_books as $book)
+@auth
+    <strong>自分の単語帳</strong><br>
+    @foreach($my_books as $book)
         {{ $book->book_name }}
         <a href="{{ route('book.delete', ['book_id' => $book->book_id]) }}">削除</a>
         <br>
     @endforeach
+@endauth
+<div>
+    <br><strong>みんなの単語帳</strong><br>
+    @foreach($all_books as $book)
+        {{ $book->book_name }}
+        <br>
+    @endforeach
 </div>
-
-
 @auth
     <div>
         <form>
