@@ -16,4 +16,5 @@ return [
     'edit_book' => '単語帳の編集',
     'book' => '単語帳',
     'top' => 'トップ',
+    'delete' => '削除',
 ];
