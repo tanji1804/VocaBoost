@@ -18,13 +18,13 @@ function nofunc() { // キャンセルをクリックした場合
 }
 </script>
 
-<!--<div>-->
-<!--    @foreach($all_books as $book)-->
-<!--        {{ $book->book_name }}-->
-<!--        <a href="{{ route('book.delete', ['book_id' => $book->book_id]) }}">{{ __('messages.delete') }}</a>-->
-<!--        <br>-->
-<!--    @endforeach-->
-<!--</div>-->
+<div>
+    @foreach($all_books as $book)
+        {{ $book->book_name }}
+        <a href="{{ route('book.delete', ['book_id' => $book->book_id]) }}">削除</a>
+        <br>
+    @endforeach
+</div>
 
 
 @auth

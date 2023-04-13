@@ -9,6 +9,7 @@ class Book extends Model
 {
     use HasFactory;
     
+    protected $primaryKey = 'book_id';
     protected $guarded = array('id');
     
     public static $rules = array(
