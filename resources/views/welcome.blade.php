@@ -2,26 +2,11 @@
 
 @section('title',config('app.name','VocaBoost').' '.__('messages.top'))
 @section('content')
-    <script>
- 
-function popup() { // 問い合わせるボタンをクリックした場合
-    document.getElementById('popup').style.display = 'block';
-    return false;
-}
- 
-function okfunc() { // OKをクリックした場合
-    document.contactform.submit();
-}
- 
-function nofunc() { // キャンセルをクリックした場合
-    document.getElementById('popup').style.display = 'none';
-}
-</script>
 
 @auth
     <strong>自分の単語帳</strong><br>
     @foreach($my_books as $book)
-        {{ $book->book_name }}
+        <a href="{{ route('book.index', ['book_id' => $book->book_id]) }}">{{ $book->book_name }}</a>
         <a href="{{ route('book.delete', ['book_id' => $book->book_id]) }}">削除</a>
         <br>
     @endforeach
