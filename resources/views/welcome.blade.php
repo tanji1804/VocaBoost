@@ -20,10 +20,7 @@
 </div>
 @auth
     <div>
-        <form>
-            @csrf
-            <input type="button" value="+" name="create_book_button" onclick="return popup()" />
-        </form>
+        <input type="button" value="+" name="create_book_button" onclick="return popup()" />
     </div>
     <div id="popup" style="width: 200px;display: none;padding: 30px 20px;border: 2px solid #000;margin: auto;">
         <br />
