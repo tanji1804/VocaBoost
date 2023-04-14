@@ -31,8 +31,8 @@
             @csrf
             <input type="text" name="book_name" value="{{ old('book_name') }}" />
             <input type="submit" id="ok" onclick="okfunc()" value="登録" />
-            <button id="no" onclick="nofunc()">キャンセル</button>
         </form>
+            <button id="no" onclick="nofunc()">キャンセル</button>
     </div>
 @endauth
 
