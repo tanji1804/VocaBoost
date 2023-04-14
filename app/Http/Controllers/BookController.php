@@ -12,9 +12,12 @@ use App\Http\Requests\BookRequest;
 class BookController extends Controller
 {
     // index
-    public function index()
+    public function index(Request $request)
     {
-        return view('book.index');
+        $book = Book::find($request->book_id);
+        $user_id = Auth::id();
+        
+        return view('book.index', ['book' => $book, 'user_id' => $user_id]);
     }
     
     // create book
