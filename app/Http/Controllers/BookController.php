@@ -40,7 +40,12 @@ class BookController extends Controller
     {
         $book = Book::find($request->book_id);
         $book_name_form = $request->book_name;
-        $book->book_name = $book_name_form;
+        
+        if($book_name_form === null){
+            $book->book_name = "untitled";
+        }else{
+            $book->book_name = $book_name_form;
+        }
         
         unset($book['_token']);
         
