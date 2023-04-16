@@ -19,13 +19,14 @@ Route::get('/', [App\Http\Controllers\TopController::class, 'index'])->name('top
 // BookController
 use App\Http\Controllers\BookController;
 Route::controller(BookController::class)->prefix('book')->name('book.')->middleware('auth')->group(function(){
-    Route::get('', 'index')->name('index');
     Route::post('create','create')->name('create');
     Route::get('edit', 'edit')->name('edit');
     Route::post('edit', 'update')->name('update');
     Route::get('delete', 'delete')->name('delete');
 });
+Route::get('book', [App\Http\Controllers\BookController::class, 'index'])->name('book.index');
 
+// Auth
 Auth::routes();
 
 // HomeController
