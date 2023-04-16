@@ -17,4 +17,6 @@ return [
     'book' => '単語帳',
     'top' => 'トップ',
     'delete' => '削除',
+    'created_by' => '作成者',
+    'book_id' => 'bookID',
 ];
