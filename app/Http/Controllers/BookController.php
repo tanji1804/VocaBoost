@@ -11,7 +11,7 @@ use App\Http\Requests\BookRequest;
 
 class BookController extends Controller
 {
-    // index
+    // book.index
     public function index(Request $request)
     {
         $book = Book::find($request->book_id);
@@ -20,34 +20,38 @@ class BookController extends Controller
         return view('book.index', ['book' => $book, 'user_id' => $user_id]);
     }
     
-    // create book
+    // book.create
     public function create(BookRequest $request)
     {
-        $books = new Book;
+        $book = new Book;
         $form = $request->all();
         $form += array('user_id' => Auth::id());
         
         unset($form['_token']);
         
-        $books->fill($form);
-        $books->save();
+        $book->fill($form);
+        $book->save();
         
         return redirect('/');
     }
     
-    //  edit book
-    public function edit()
+    //  book.edit
+    public function edit(Request $request)
     {
+        $book = Book::find($request->book_id);
+        $book_name_form = $request->book_name;
+        $book->book_name = $book_name_form;
         
+        unset($book['_token']);
+        
+        $book->save();
+        
+        $user_id = Auth::id();
+        
+        return view('book.index', ['book' => $book, 'user_id' => $user_id]);
     }
     
-    // update book
-    public function update()
-    {
-        
-    }
-    
-    // delete book
+    // book.delete
     public function delete(Request $request)
     {
         $book = Book::find($request->book_id);

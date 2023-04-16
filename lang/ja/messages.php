@@ -13,6 +13,7 @@ return [
     'confirm_password' => 'パスワードの確認',
     'create_book' => '単語帳登録',
     'forgot_your_password?' => 'パスワードを忘れた',
+    'edit' => '編集',
     'edit_book' => '単語帳の編集',
     'book' => '単語帳',
     'top' => 'トップ',
