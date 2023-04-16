@@ -17,5 +17,19 @@
             </form>
             <button id="no" onclick="nofunc()">キャンセル</button>
         </div>
+        <div>
+            <input type="button" value="+" name="create_card_button" onclick="return popup2()" />
+        </div>
+        <div id="popup2" style="width: 200px;display: none;padding: 30px 20px;border: 2px solid #000;margin: auto;">
+            <br>
+            <form method="POST" action="{{ route('book.create') }}">
+                @csrf
+                <input type="text" name="a_card" value="{{ old('a_card') }}" />
+                <input type="text" name="b_card" value="{{ old('b_card') }}" />
+                <input type="submit" id="ok" onclick="okfunc2()" value="{{ __('messages.register') }}" />
+            </form>
+            <button id="no" onclick="nofunc2()">キャンセル</button>
+        </div>
+
     @endif
 @endsection
