@@ -9,7 +9,6 @@
 - bootstrap
 - Google Cloud Vision API
 
-<<<<<<< HEAD
 ### 機能
 - 単語カードのスキャン
   - Google Cloud Vision API を使って単語帳をスキャン？
@@ -30,7 +29,3 @@
 ### 3.アカウント
 - 1つのアカウントで複数の単語帳を登録できる
 
-## タスク
-- [ ] Controller
-- [ ] Controllerに必要なfunction書く（中身は空）
-- [ ] Route書き込む
