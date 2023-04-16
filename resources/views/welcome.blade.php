@@ -6,8 +6,7 @@
 @auth
     <strong>自分の単語帳</strong><br>
     @foreach($my_books as $book)
-        <a href="{{ route('book.index', ['book_id' => $book->book_id]) }}">{{ $book->book_name }}</a>
-        <a href="{{ route('book.delete', ['book_id' => $book->book_id]) }}">削除</a>
+        <a href="{{ route('book.index', ['book_id' => $book->book_id]) }}">{{ $book->book_name }}</a> 
         <br>
     @endforeach
 @endauth
