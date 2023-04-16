@@ -23,8 +23,6 @@ class BookController extends Controller
     // create book
     public function create(BookRequest $request)
     {
-        $this->validate($request, Book::$rules);
-        
         $books = new Book;
         $form = $request->all();
         $form += array('user_id' => Auth::id());

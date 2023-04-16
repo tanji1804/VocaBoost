@@ -11,8 +11,4 @@ class Book extends Model
     
     protected $primaryKey = 'book_id';
     protected $guarded = array('id');
-    
-    public static $rules = array(
-        'book_name' => 'string',
-    );
 }
