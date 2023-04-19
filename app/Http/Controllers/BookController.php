@@ -14,7 +14,7 @@ class BookController extends Controller
     // book.index
     public function index(Request $request)
     {
-        $book = Book::find($request->book_id);
+        $book = Book::find($request->id);
         $user_id = Auth::id();
         
         return view('book.index', ['book' => $book, 'user_id' => $user_id]);
@@ -25,7 +25,7 @@ class BookController extends Controller
     {
         $book = new Book;
         $form = $request->all();
-        $form += array('user_id' => Auth::id());
+        $form['user_id'] = Auth::id();
         
         unset($form['_token']);
         
@@ -38,7 +38,7 @@ class BookController extends Controller
     //  book.edit
     public function edit(Request $request)
     {
-        $book = Book::find($request->book_id);
+        $book = Book::find($request->id);
         $book_name_form = $request->book_name;
         
         if($book_name_form === null){
@@ -59,7 +59,7 @@ class BookController extends Controller
     // book.delete
     public function delete(Request $request)
     {
-        $book = Book::find($request->book_id);
+        $book = Book::find($request->id);
         $book->delete();
         return redirect('/');
     }

@@ -6,14 +6,14 @@
 @auth
     <strong>自分の単語帳</strong><br>
     @foreach($my_books as $book)
-        <a href="{{ route('book.index', ['book_id' => $book->book_id]) }}">{{ $book->book_name }}</a> 
+        <a href="{{ route('book.index', ['id' => $book->id]) }}">{{ $book->book_name }}</a> 
         <br>
     @endforeach
 @endauth
 <div>
     <br><strong>みんなの単語帳</strong><br>
     @foreach($all_books as $book)
-        <a href="{{ route('book.index', ['book_id' => $book->book_id]) }}">{{ $book->book_name }}</a>
+        <a href="{{ route('book.index', ['id' => $book->id]) }}">{{ $book->book_name }}</a>
         {{ __('messages.created_by') }}: 
         {{ $book->user_id }}
         <br>

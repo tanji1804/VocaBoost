@@ -3,32 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Card;
 
 class CardController extends Controller
 {
-    // create card
+    // card.create
     public function create(cardRequest $request)
     {
-        
+        $card = new Card;
+        $form = $request->all();
+        dd($form);
     }
     
-    //  edit card
+    //  card.edit
     public function edit()
     {
         
     }
     
-    // update card
-    public function update()
-    {
-        
-    }
-    
-    // delete card
+    // card.delete
     public function delete(Request $request)
     {
         $card = Card::find($request->card_id);
         $card->delete();
-        return redirect('/');
+        return redirect('book');
     }
 }

@@ -9,6 +9,6 @@ class Card extends Model
 {
     use HasFactory;
     
-    protected $primaryKey = 'card_id';
-    protected $guarded = array('book_id');
+    protected $primaryKey = 'id';
+    protected $guarded = array('id');
 }

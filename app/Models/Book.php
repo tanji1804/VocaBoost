@@ -9,6 +9,6 @@ class Book extends Model
 {
     use HasFactory;
     
-    protected $primaryKey = 'book_id';
+    protected $primaryKey = 'id';
     protected $guarded = array('id');
 }
