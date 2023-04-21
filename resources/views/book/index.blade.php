@@ -15,20 +15,21 @@
                 <input type="text" name="book_name" value="{{ old('book_name') }}" />
                 <input type="submit" id="ok" onclick="okfunc()" value="{{ __('messages.register') }}" />
             </form>
-            <button id="no" onclick="nofunc()">キャンセル</button>
+            <button id="no" onclick="nofunc()">{{ __('messages.cancel') }}</button>
         </div>
         <div>
             <input type="button" value="+" name="create_card_button" onclick="return popup2()" />
         </div>
         <div id="popup2" style="width: 200px;display: none;padding: 30px 20px;border: 2px solid #000;margin: auto;">
             <br>
-            <form method="POST" action="{{ route('book.create') }}">
+            <form method="POST" action="{{ route('card.create') }}">
                 @csrf
+                <input type="hidden" name="book_id" value="{{ $book->id }}">
                 <input type="text" name="a_card" value="{{ old('a_card') }}" />
                 <input type="text" name="b_card" value="{{ old('b_card') }}" />
                 <input type="submit" id="ok" onclick="okfunc2()" value="{{ __('messages.register') }}" />
             </form>
-            <button id="no" onclick="nofunc2()">キャンセル</button>
+            <button id="no" onclick="nofunc2()">{{ __('messages.cancel') }}</button>
         </div>
 
     @endif

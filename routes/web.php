@@ -27,7 +27,7 @@ Route::get('book', [App\Http\Controllers\BookController::class, 'index'])->name(
 
 // CardCpntroller
 use App\Http\Controllers\CardController;
-Route::controller(CardContoller::class)->prefix('card')->name('card.')->group(function(){
+Route::controller(CardController::class)->prefix('card')->name('card.')->group(function(){
     Route::post('create', 'create')->name('create');
     Route::post('edit', 'edit')->name('edit');
     Route::get('delete', 'delete')->name('delete');

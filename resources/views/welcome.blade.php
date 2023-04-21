@@ -9,17 +9,6 @@
         <a href="{{ route('book.index', ['id' => $book->id]) }}">{{ $book->book_name }}</a> 
         <br>
     @endforeach
-@endauth
-<div>
-    <br><strong>みんなの単語帳</strong><br>
-    @foreach($all_books as $book)
-        <a href="{{ route('book.index', ['id' => $book->id]) }}">{{ $book->book_name }}</a>
-        {{ __('messages.created_by') }}: 
-        {{ $book->user_id }}
-        <br>
-    @endforeach
-</div>
-@auth
     <div>
         <input type="button" value="+" name="create_book_button" onclick="return popup()" />
     </div>
@@ -33,5 +22,14 @@
         <button id="no" onclick="nofunc()">キャンセル</button>
     </div>
 @endauth
+<div>
+    <br><strong>みんなの単語帳</strong><br>
+    @foreach($all_books as $book)
+        <a href="{{ route('book.index', ['id' => $book->id]) }}">{{ $book->book_name }}</a>
+        {{ __('messages.created_by') }}: 
+        {{ $book->user_id }}
+        <br>
+    @endforeach
+</div>
 
 @endsection

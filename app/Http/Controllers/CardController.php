@@ -3,16 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Card;
+use App\Models\Book;
+use App\Http\Requests\CardRequest;
 
 class CardController extends Controller
 {
     // card.create
-    public function create(cardRequest $request)
+    public function create(CardRequest $request)
     {
         $card = new Card;
+        $book = Book::find($request->book_id);
         $form = $request->all();
-        dd($form);
+        
+        unset($form['_token']);
+        
+        $card->fill($form);
+        $card->save();
+        
+        
+        return view('book.index', ['book' => $book, 'user_id' => Auth::id()]);
     }
     
     //  card.edit

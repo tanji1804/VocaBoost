@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'cancel' => 'キャンセル',
     'login' => 'ログイン',
     'logout' => 'ログアウト',
     'logged_in' => 'ログイン完了',
