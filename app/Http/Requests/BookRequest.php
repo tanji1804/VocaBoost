@@ -8,15 +8,15 @@ class BookRequest extends FormRequest
 {
     public function prepareForValidation()
     {
-        if (!$this->filled('book_name')) {
-            $this->merge(['book_name' => 'untitled']);
+        if (!$this->filled('name')) {
+            $this->merge(['name' => 'untitled']);
         }
     }
 
     public function rules()
     {
         return [
-            'book_name' => 'required',
+            'name' => 'required',
         ];
     }
 }

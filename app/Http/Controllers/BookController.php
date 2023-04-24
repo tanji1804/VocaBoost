@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
+use App\Models\Card;
 use App\Http\Requests\BookRequest;
 
 
@@ -15,9 +16,11 @@ class BookController extends Controller
     public function index(Request $request)
     {
         $book = Book::find($request->id);
+        
+        $cards = $book->cards;
         $user_id = Auth::id();
         
-        return view('book.index', ['book' => $book, 'user_id' => $user_id]);
+        return view('book.index', ['book' => $book, 'user_id' => $user_id, 'cards' => $cards]);
     }
     
     // book.create
@@ -39,12 +42,12 @@ class BookController extends Controller
     public function edit(Request $request)
     {
         $book = Book::find($request->id);
-        $book_name_form = $request->book_name;
+        $name_form = $request->name;
         
-        if($book_name_form === null){
-            $book->book_name = "untitled";
+        if($name_form === null){
+            $book->name = "untitled";
         }else{
-            $book->book_name = $book_name_form;
+            $book->name = $name_form;
         }
         
         unset($book['_token']);
@@ -53,7 +56,7 @@ class BookController extends Controller
         
         $user_id = Auth::id();
         
-        return view('book.index', ['book' => $book, 'user_id' => $user_id]);
+        return redirect(route('book.index', ['id' => $book->id]));
     }
     
     // book.delete

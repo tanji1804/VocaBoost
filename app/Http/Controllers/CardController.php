@@ -22,8 +22,7 @@ class CardController extends Controller
         $card->fill($form);
         $card->save();
         
-        
-        return view('book.index', ['book' => $book, 'user_id' => Auth::id()]);
+        return redirect(route('book.index', ['id' => $book->id]));
     }
     
     //  card.edit

@@ -13,11 +13,11 @@ class CardRequest extends FormRequest
      */
     public function prepareForValidation()
     {
-        if (!$this->filled('a_card')) {
-            $this->merge(['a_card' => 'untitled']);
+        if (!$this->filled('front')) {
+            $this->merge(['front' => 'untitled']);
         }
-        if(!$this->filled('b_card')){
-            $this->merge(['b_card' => 'untitled']);
+        if(!$this->filled('back')){
+            $this->merge(['back' => 'untitled']);
         }
     }
 
@@ -29,8 +29,8 @@ class CardRequest extends FormRequest
     public function rules()
     {
         return [
-            'a_card' => 'required',
-            'b_card' => 'required',
+            'front' => 'required',
+            'back' => 'required',
         ];
     }
 }

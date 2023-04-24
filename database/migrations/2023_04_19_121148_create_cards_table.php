@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
             $table->foreignId('book_id')->constrained('books');
-            $table->string('a_card');
-            $table->string('b_card');
+            $table->string('front');
+            $table->string('back');
             $table->timestamps();
         });
     }

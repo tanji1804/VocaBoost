@@ -6,7 +6,7 @@
 @auth
     <strong>自分の単語帳</strong><br>
     @foreach($my_books as $book)
-        <a href="{{ route('book.index', ['id' => $book->id]) }}">{{ $book->book_name }}</a> 
+        <a href="{{ route('book.index', ['id' => $book->id]) }}">{{ $book->name }}</a> 
         <br>
     @endforeach
     <div>
@@ -16,7 +16,7 @@
         <br>
         <form method="POST" action="{{ route('book.create') }}">
             @csrf
-            <input type="text" name="book_name" value="{{ old('book_name') }}" />
+            <input type="text" name="name" value="{{ old('name') }}" />
             <input type="submit" id="ok" onclick="okfunc()" value="{{ __('messages.register') }}" />
         </form>
         <button id="no" onclick="nofunc()">キャンセル</button>
@@ -25,7 +25,7 @@
 <div>
     <br><strong>みんなの単語帳</strong><br>
     @foreach($all_books as $book)
-        <a href="{{ route('book.index', ['id' => $book->id]) }}">{{ $book->book_name }}</a>
+        <a href="{{ route('book.index', ['id' => $book->id]) }}">{{ $book->name }}</a>
         {{ __('messages.created_by') }}: 
         {{ $book->user_id }}
         <br>
