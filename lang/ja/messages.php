@@ -1,7 +1,12 @@
 <?php
 
 return [
+    'back' => '裏',
+    'book' => '単語帳',
+    'book_id' => 'bookID',
+    'book_name' => '単語帳の名前',
     'cancel' => 'キャンセル',
+    'front' => '表',
     'login' => 'ログイン',
     'logout' => 'ログアウト',
     'logged_in' => 'ログイン完了',
@@ -16,9 +21,7 @@ return [
     'forgot_your_password?' => 'パスワードを忘れた',
     'edit' => '編集',
     'edit_book' => '単語帳の編集',
-    'book' => '単語帳',
     'top' => 'トップ',
     'delete' => '削除',
     'created_by' => '作成者',
-    'book_id' => 'bookID',
 ];

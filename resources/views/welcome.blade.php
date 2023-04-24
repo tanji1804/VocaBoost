@@ -16,7 +16,7 @@
         <br>
         <form method="POST" action="{{ route('book.create') }}">
             @csrf
-            <input type="text" name="name" value="{{ old('name') }}" />
+            <input type="text" placeholder="{{ __('messages.book_name') }}" name="name" value="{{ old('name') }}" />
             <input type="submit" id="ok" onclick="okfunc()" value="{{ __('messages.register') }}" />
         </form>
         <button id="no" onclick="nofunc()">キャンセル</button>

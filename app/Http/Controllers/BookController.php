@@ -52,9 +52,7 @@ class BookController extends Controller
         
         unset($book['_token']);
         
-        $book->save();
-        
-        $user_id = Auth::id();
+        $book->update();
         
         return redirect(route('book.index', ['id' => $book->id]));
     }
@@ -63,7 +61,10 @@ class BookController extends Controller
     public function delete(Request $request)
     {
         $book = Book::find($request->id);
+        
+        Card::where('book_id', $request->id)->delete();
         $book->delete();
+        
         return redirect('/');
     }
 }

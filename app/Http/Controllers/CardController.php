@@ -26,11 +26,27 @@ class CardController extends Controller
     }
     
     //  card.edit
-    public function edit()
+    public function edit(Request $request)
     {
+        $card = Card::find($request->id);
+        $form = $request->all();
         
+        if($form['front'] === null){
+            $card->front = 'untitled';
+        }else{
+            $card->front = $form['front'];
+        }
+        if($form['back'] === null){
+            $card->back = 'untitled';
+        }else{
+            $card->back = $form['back'];
+        }
+        
+        $card->update();
+        
+        return redirect(route('book.index', ['id' => $request->book_id]));
     }
-    
+
     // card.delete
     public function delete(Request $request)
     {
