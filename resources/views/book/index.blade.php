@@ -4,9 +4,12 @@
 @section('content')
     {{ $book->name }}
     {{ __('messages.created_by') }}: {{ $book->user_id }}
-    {{ __('messages.book_id') }}: {{ $book->id }} <br>
-        <button onclick="return popup()" >{{ __('messages.edit') }}</button> 
-        <a href="{{ route('book.delete', ['id' => $book->id]) }}">{{ __('messages.delete') }}</a><br>
+    {{ __('messages.book_id') }}: {{ $book->id }} 
+    <br>
+    <a href="{{ route('quiz', ['id' => $book->id]) }}">{{ __('messages.question') }}</a>
+    <button onclick="return popup()" >{{ __('messages.edit') }}</button> 
+    <a href="{{ route('book.delete', ['id' => $book->id]) }}">{{ __('messages.delete') }}</a>
+    <br>
     @foreach($cards as $card)
     {{ $card->front }} が {{ $card->back }}
     <a href="{{ route('card.delete', ['id' => $card->id]) }}">{{ __('messages.delete') }}</a>
@@ -15,7 +18,7 @@
                 <input type="hidden" name="book_id" value="{{ $book->id }}">
                 <input type="text" placeholder="{{ __('messages.front') }}" name="front" value="{{ old('front') }}" />
                 <input type="text" placeholder="{{ __('messages.back') }}" name="back" value="{{ old('back') }}" />
-                <input type="submit" value="{{ __('messages.register') }}" />
+                <input type="submit" value="{{ __('messages.update') }}" />
             </form>
     @endforeach
     @if($book->user_id === $user_id)
@@ -24,7 +27,7 @@
             <form method="POST" action="{{ route('book.edit', ['id' => $book->id]) }}">
                 @csrf
                 <input type="text" placeholder="{{ $book->name }}" name="name" value="{{ old('name') }}" />
-                <input type="submit" id="ok" onclick="okfunc()" value="{{ __('messages.register') }}" />
+                <input type="submit" id="ok" onclick="okfunc()" value="{{ __('messages.update') }}" />
             </form>
             <button id="no" onclick="nofunc()">{{ __('messages.cancel') }}</button>
         </div>

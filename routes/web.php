@@ -33,6 +33,9 @@ Route::controller(CardController::class)->prefix('card')->name('card.')->group(f
     Route::get('delete', 'delete')->name('delete');
 });
 
+// QuizController
+Route::get('quiz', [App\Http\Controllers\QuizController::class, 'quiz'])->name('quiz');
+
 // Auth
 Auth::routes();
 
