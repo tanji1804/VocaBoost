@@ -12,11 +12,16 @@ class QuizController extends Controller
             $book = Book::find($request->id);
             $shuf_cards = $book->cards->shuffle();
             $cards_num = $shuf_cards->count() - 1;
-        
+            $four_choises = [];
+            
+            for($i = 0; $i < 4; $i++){
+                array_push($four_choises, $shuf_cards[$i]);
+            }
+            
             return view('quiz.quiz', [
                 'book' => $book,
                 'shuf_cards' => $shuf_cards,
-                'cards_num' => $cards_num,
+                'four_choises' => $four_choises,
             ]);
         }
 

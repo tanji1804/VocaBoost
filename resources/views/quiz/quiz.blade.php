@@ -10,9 +10,10 @@
         <br>
         {{ $card->front }} は？ 
         <br>
-        @for($i = 0; $i < 4; $i++)
-            [{{ $shuf_cards[mt_rand(0, $cards_num)]->back }}] 
-        @endfor
+        <!--{{ shuffle($four_choises) }}-->
+        @foreach($four_choises as $choise)
+            {{ $choise->back }} 
+        @endforeach
         <br>
         ----------------------------
         <br>
