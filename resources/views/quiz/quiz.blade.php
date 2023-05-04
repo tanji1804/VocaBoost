@@ -5,16 +5,14 @@
     {{ $book->name }}
     {{ __('messages.question_from') }}
     <br>
-    @foreach($card_keys as $key)
+    @foreach($shuf_cards as $card)
         ----------------------------
         <br>
-        {{ $cards[$key]->front }}
-        は？
+        {{ $card->front }} は？ 
         <br>
-        [{{ $cards[$key]->back }}]
-        [{{ $cards[rand(0, $cards_num)]->back }}]
-        [{{ $cards[rand(0, $cards_num)]->back }}]
-        [{{ $cards[rand(0, $cards_num)]->back }}]
+        @for($i = 0; $i < 4; $i++)
+            [{{ $shuf_cards[mt_rand(0, $cards_num)]->back }}] 
+        @endfor
         <br>
         ----------------------------
         <br>
