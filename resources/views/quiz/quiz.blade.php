@@ -15,13 +15,22 @@
             @php
                 shuffle($choises);
                 $counter = 0;
+                $right_choise = mt_rand(0, 3);
             @endphp
             @foreach($choises as $choise)
-                <!--{{ $counter++ }}-->
-                <label>
-                    <input type="radio" name="{{ $card->id }}" value="{{ $choise->id }}">
-                    {{ $choise->back }}
-                </label>
+                @if($counter == $right_choise)
+                    <label>
+                        <input type="radio" name="{{ $card->id }}" value="{{ $card->id }}">
+                        {{ $card->back }}
+                    </label>
+                    <!--{{ $counter++ }}-->
+                @elseif($card->id != $choise->id)
+                    <label>
+                        <input type="radio" name="{{ $card->id }}" value="{{ $choise->id }}">
+                        {{ $choise->back }}
+                    </label>
+                    <!--{{ $counter++ }}-->
+                @endif
                 @if($counter == 4)
                     @break
                 @endif
