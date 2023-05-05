@@ -41,5 +41,4 @@
         @endforeach
         <input type="submit">
     </form>
-    
 @endsection

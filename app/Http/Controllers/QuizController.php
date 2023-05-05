@@ -18,7 +18,7 @@ class QuizController extends Controller
                 array_push($choises, $card);
             }
             
-            return view('quiz.quiz', [
+            return view('quiz.question', [
                 'book' => $book,
                 'shuf_cards' => $shuf_cards,
                 'choises' => $choises,
@@ -27,7 +27,7 @@ class QuizController extends Controller
         
         public function result(Request $request)
         {
-            dd($request);
+            return view('quiz.result');
         }
 
 }

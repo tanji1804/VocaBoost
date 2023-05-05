@@ -26,6 +26,7 @@ return [
     'user_register' => '新規アカウント登録',
     'update' => '更新',
     'remember_me' => 'ログイン情報を記憶する',
+    'result' => '結果',
     'register' => '登録',
     'top' => 'トップ',
 ];
