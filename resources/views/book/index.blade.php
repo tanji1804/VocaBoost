@@ -11,8 +11,8 @@
     <a href="{{ route('book.delete', ['id' => $book->id]) }}">{{ __('messages.delete') }}</a>
     <br>
     @foreach($cards as $card)
-    {{ $card->front }} が {{ $card->back }}
-    <a href="{{ route('card.delete', ['id' => $card->id]) }}">{{ __('messages.delete') }}</a>
+        {{ $card->front }} が {{ $card->back }}
+        <a href="{{ route('card.delete', ['id' => $card->id]) }}">{{ __('messages.delete') }}</a>
             <form method="POST" action="{{ route('card.edit', ['id' => $card->id]) }}">
                 @csrf
                 <input type="hidden" name="book_id" value="{{ $book->id }}">
