@@ -5,17 +5,17 @@
     {{ $book->name }}
     {{ __('messages.question_from') }}
     <br>
-    @foreach($shuf_cards as $card)
-        ----------------------------
-        <br>
-        {{ $card->front }} は？ 
-        <br>
-        <!--{{ shuffle($four_choises) }}-->
-        @foreach($four_choises as $choise)
-            {{ $choise->back }} 
+    <form method="POST" action="{{ route('quiz.result') }}">
+    @csrf
+        @foreach($shuf_cards as $card)
+            ----------------------------
+            <br>
+            {{ $card->front }} は？ 
+            <br>
+            ----------------------------
+            <br>
         @endforeach
-        <br>
-        ----------------------------
-        <br>
-    @endforeach
+        <input type="submit">
+    </form>
+    
 @endsection

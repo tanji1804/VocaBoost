@@ -34,7 +34,11 @@ Route::controller(CardController::class)->prefix('card')->name('card.')->group(f
 });
 
 // QuizController
-Route::get('quiz', [App\Http\Controllers\QuizController::class, 'quiz'])->name('quiz');
+use App\Http\Controllers\QuizController;
+Route::controller(QuizController::class)->prefix('quiz')->name('quiz.')->group(function(){
+    Route::get('/question', 'question')->name('question');
+    Route::post('/result', 'result')->name('result');
+});
 
 // Auth
 Auth::routes();

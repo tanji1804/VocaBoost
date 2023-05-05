@@ -6,7 +6,7 @@
     {{ __('messages.created_by') }}: {{ $book->user_id }}
     {{ __('messages.book_id') }}: {{ $book->id }} 
     <br>
-    <a href="{{ route('quiz', ['id' => $book->id]) }}">{{ __('messages.question') }}</a>
+    <a href="{{ route('quiz.question', ['id' => $book->id]) }}">{{ __('messages.question') }}</a>
     <button onclick="return popup()" >{{ __('messages.edit') }}</button> 
     <a href="{{ route('book.delete', ['id' => $book->id]) }}">{{ __('messages.delete') }}</a>
     <br>
