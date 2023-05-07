@@ -12,11 +12,7 @@ class QuizController extends Controller
         {
             $book = Book::find($request->id);
             $shuf_cards = $book->cards->shuffle();
-            $choises = [];
-            
-            foreach($shuf_cards as $card){
-                array_push($choises, $card);
-            }
+            $choises = $shuf_cards;
             
             return view('quiz.question', [
                 'book' => $book,
@@ -27,13 +23,13 @@ class QuizController extends Controller
         
         public function result(Request $request)
         {
+            $total_points = count(explode("},", $request->shuf_cards)); 
             $book = Book::find($request->book_id);
             $form = $request->all();
             
             unset($form['book_id'], $form['_token']);
             
             $chosen_cards = $form;
-            $total_points = count($chosen_cards);
             $points = 0;
             $result = [];
             
