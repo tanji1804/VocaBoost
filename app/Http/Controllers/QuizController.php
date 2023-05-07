@@ -27,7 +27,27 @@ class QuizController extends Controller
         
         public function result(Request $request)
         {
-            return view('quiz.result');
+            $book = Book::find($request->book_id);
+            $form = $request->all();
+            
+            unset($form['book_id'], $form['_token']);
+            
+            $chosen_cards = $form;
+            $total_points = count($chosen_cards);
+            $points = 0;
+            $result = [];
+            
+            foreach($chosen_cards as $ques_id => $cho_id){
+                if($ques_id == $cho_id){
+                    $points++;
+                }
+            }
+            
+            return view('quiz.result', [
+                'book' => $book,
+                'total_points' => $total_points,
+                'points' => $points,
+                ]);
         }
 
 }

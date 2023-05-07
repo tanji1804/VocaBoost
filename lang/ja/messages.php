@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'again' => 'やり直す',
     'back' => '裏',
     'book' => '単語帳',
     'book_id' => 'bookID',
@@ -10,6 +11,7 @@ return [
     'create_book' => '単語帳登録',
     'cancel' => 'キャンセル',
     'delete' => '削除',
+    'dont_know' => 'わからない',
     'edit' => '編集',
     'email' => 'メールアドレス',
     'edit_book' => '単語帳の編集',
