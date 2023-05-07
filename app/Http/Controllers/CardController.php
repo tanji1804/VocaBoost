@@ -52,6 +52,6 @@ class CardController extends Controller
     {
         $card = Card::find($request->card_id);
         $card->delete();
-        return redirect('book');
+        return redirect(route('book.index', ['id' => $request->book_id]));
     }
 }
