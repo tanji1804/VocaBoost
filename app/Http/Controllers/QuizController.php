@@ -17,13 +17,13 @@ class QuizController extends Controller
             return view('quiz.question', [
                 'book' => $book,
                 'shuf_cards' => $shuf_cards,
-                'choises' => $choises,
+                // 'choises' => $choises,
             ]);
         }
         
         public function result(Request $request)
         {
-            $total_points = count(explode("},", $request->shuf_cards)); 
+            $total_points = $request->max_points; 
             $book = Book::find($request->book_id);
             $form = $request->all();
             
