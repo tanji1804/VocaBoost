@@ -16,7 +16,7 @@
             <br>
             @foreach($card->getChoiseCards(3) as $choise)
                     <label>
-                        <input type="radio" name="{{ $choise->id }}" value="{{ $choise->id }}">
+                        <input type="radio" name="{{ $card->id }}" value="{{ $choise->id }}">
                         {{ $choise->back }}
                     </label>
             @endforeach

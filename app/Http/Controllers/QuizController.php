@@ -12,18 +12,16 @@ class QuizController extends Controller
         {
             $book = Book::find($request->id);
             $shuf_cards = $book->cards->shuffle();
-            $choises = $shuf_cards;
             
             return view('quiz.question', [
                 'book' => $book,
                 'shuf_cards' => $shuf_cards,
-                // 'choises' => $choises,
             ]);
         }
         
         public function result(Request $request)
         {
-            $total_points = $request->max_points; 
+            $max_points = $request->max_points; 
             $book = Book::find($request->book_id);
             $form = $request->all();
             
@@ -41,7 +39,7 @@ class QuizController extends Controller
             
             return view('quiz.result', [
                 'book' => $book,
-                'total_points' => $total_points,
+                'max_points' => $max_points,
                 'points' => $points,
                 ]);
         }

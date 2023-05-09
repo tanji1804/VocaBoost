@@ -10,7 +10,6 @@ class Book extends Model
     use HasFactory;
     
     protected $table = 'books';
-    protected $primaryKey = 'id';
     protected $guarded = array('id');
     
     public function cards()

@@ -11,7 +11,6 @@ class Card extends Model
     use HasFactory;
     
     protected $table = 'cards';
-    protected $primaryKey = 'id';
     protected $guarded = array('id');
     
     public function book()
@@ -19,15 +18,19 @@ class Card extends Model
         return $this->belongsTo(Book::class, 'book_id', 'id');
     }
     
-    public function getOtherCards($how_many)
+    public function getOtherCardsInThisBook($how_many)
     {
-        return Card::whereNotIn('id', [$this->id])->inRandomOrder()->limit($how_many)->get();
+        return Card::whereNotIn('id', [$this->id])
+                    ->where('book_id', $this->book_id)
+                    ->inRandomOrder()
+                    ->limit($how_many)
+                    ->get();
     }
     
     public function getChoiseCards($how_many)
     {
         $choises = collect([$this]);
-        foreach($this->getOtherCards($how_many) as $not_anser_card){
+        foreach($this->getOtherCardsInThisBook($how_many) as $not_anser_card){
             $choises->push($not_anser_card);
         }
         
