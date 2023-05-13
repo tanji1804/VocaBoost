@@ -2,7 +2,17 @@
 
 @section('title',config('app.name','VocaBoost')." | ".__('messages.quiz'))
 @section('content')
-    <a href="{{ route('book.index', ['id' => $book->id]) }}">{{ $book->name }}</a>
+    @switch($type)
+        @case(0)
+            {{ __('messages.all_books') }}
+            @break
+        @case(1)
+            {{ __('messages.my_books') }}
+            @break
+        @case(2)
+            <a href="{{ route('book.index', ['id' => $book->id]) }}">{{ $book->name }}</a>
+            @break
+    @endswitch
     {{ __('messages.question_from') }}
     <br>
     <form method="POST" action="{{ route('quiz.result', ['book_id' => $book->id,

@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
             $table->foreignId('book_id')->constrained('books');
             $table->string('front');
             $table->string('back');

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title',config('app.name','VocaBoost').' '.__('messages.top'))
+@section('title',config('app.name','VocaBoost').' | '.__('messages.top'))
 @section('content')
 
 @auth

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title',config('app.name','VocaBoost').__('messages.book'))
+@section('title',config('app.name','VocaBoost').' | '. $book->name)
 @section('content')
     {{ $book->name }}
     {{ __('messages.created_by') }}: {{ $book->user_id }}

@@ -16,6 +16,7 @@ class CardController extends Controller
         $card = new Card;
         $book = Book::find($request->book_id);
         $form = $request->all();
+        $form['user_id'] = Auth::id();
         
         unset($form['_token']);
         
