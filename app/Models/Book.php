@@ -16,9 +16,4 @@ class Book extends Model
     {
         return $this->hasMany(Card::class, 'book_id', 'id');
     }
-    
-    public function AllCards()
-    {
-        return $this->hasMany(Card::class);
-    }
 }
