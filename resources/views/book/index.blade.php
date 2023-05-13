@@ -6,16 +6,17 @@
     {{ __('messages.created_by') }}: {{ $book->user_id }}
     {{ __('messages.book_id') }}: {{ $book->id }} 
     <br>
-    <a href="{{ route('quiz.question', ['id' => $book->id]) }}">{{ __('messages.question') }}</a>
-    <button onclick="return popup()" >{{ __('messages.edit') }}</button> 
+    <a href="{{ route('quiz.question', ['id' => $book->id, 'type' => 2]) }}">{{ __('messages.question') }}</a>
+    @if($book->user_id === $user_id)
+        <button onclick="return popup()" >{{ __('messages.edit') }}</button> 
+    @endif
     <a href="{{ route('book.delete', ['id' => $book->id]) }}">{{ __('messages.delete') }}</a>
     <br>
     @foreach($cards as $card)
         {{ $card->front }} が {{ $card->back }}
         <a href="{{ route('card.delete', ['card_id' => $card->id, 'book_id' => $book->id]) }}">{{ __('messages.delete') }}</a>
-            <form method="POST" action="{{ route('card.edit', ['id' => $card->id]) }}">
+            <form method="POST" action="{{ route('card.edit', ['id' => $card->id, 'book_id' => $book->id]) }}">
                 @csrf
-                <input type="hidden" name="book_id" value="{{ $book->id }}">
                 <input type="text" placeholder="{{ __('messages.front') }}" name="front" value="{{ old('front') }}" />
                 <input type="text" placeholder="{{ __('messages.back') }}" name="back" value="{{ old('back') }}" />
                 <input type="submit" value="{{ __('messages.update') }}" />
@@ -36,9 +37,8 @@
         </div>
         <div id="popup2" style="width: 200px;display: none;padding: 30px 20px;border: 2px solid #000;margin: auto;">
             <br>
-            <form method="POST" action="{{ route('card.create') }}">
+            <form method="POST" action="{{ route('card.create', ['book_id' => $book->id]) }}">
                 @csrf
-                <input type="hidden" name="book_id" value="{{ $book->id }}">
                 <input type="text" placeholder="{{ __('messages.front') }}" name="front" value="{{ old('front') }}" />
                 <input type="text" placeholder="{{ __('messages.back') }}" name="back" value="{{ old('back') }}" />
                 <input type="submit" id="ok" onclick="okfunc2()" value="{{ __('messages.register') }}" />

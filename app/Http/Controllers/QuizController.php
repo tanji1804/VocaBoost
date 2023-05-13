@@ -5,17 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Card;
+use App\Models\AllCard;
 
 class QuizController extends Controller
 {
     public function question(Request $request)
         {
-            $book = Book::find($request->id);
-            $shuf_cards = $book->cards->shuffle();
+            $type = $request->type;
+            if($type == 2){
+                $book = Book::find($request->id);
+                $max_points = $book->cards->count();
+            }
             
             return view('quiz.question', [
                 'book' => $book,
-                'shuf_cards' => $shuf_cards,
+                'max_points' => $max_points,
+                'type' => $type,
             ]);
         }
         

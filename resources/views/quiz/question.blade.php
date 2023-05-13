@@ -5,16 +5,15 @@
     <a href="{{ route('book.index', ['id' => $book->id]) }}">{{ $book->name }}</a>
     {{ __('messages.question_from') }}
     <br>
-    <form method="POST" action="{{ route('quiz.result') }}">
+    <form method="POST" action="{{ route('quiz.result', ['book_id' => $book->id,
+                                                        'max_points' => $max_points]) }}">
     @csrf
-        <input type="hidden" name="book_id" value="{{ $book->id }}">
-        <input type="hidden" name="max_points" value="{{ count($shuf_cards) }}">
         @foreach($book->cards->shuffle() as $card)
             ----------------------------
             <br>
             {{ $card->front }} は？ 
             <br>
-            @foreach($card->getChoiseCards(3) as $choise)
+            @foreach($card->getChoiseCards(4, $type) as $choise)
                     <label>
                         <input type="radio" name="{{ $card->id }}" value="{{ $choise->id }}">
                         {{ $choise->back }}

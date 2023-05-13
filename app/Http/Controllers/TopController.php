@@ -18,9 +18,9 @@ class TopController extends Controller
         if(Auth::check()){
             $user_id = auth()->user()->id;
             $my_books = Book::where('user_id', $user_id)->get();
-            return view('welcome', ['my_books' => $my_books, 'all_books' => $all_books]);
+            return view('top', ['my_books' => $my_books, 'all_books' => $all_books]);
+        }else{
+            return view('top', ['all_books' => $all_books]);
         }
-        
-        return view('welcome', ['all_books' => $all_books]);
     }
 }

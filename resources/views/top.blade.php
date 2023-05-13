@@ -4,7 +4,11 @@
 @section('content')
 
 @auth
-    <strong>自分の単語帳</strong><br>
+    <strong>{{ __('messages.my_books') }}</strong>
+    <a href="{{ route('quiz.question', ['type' => 1]) }}">
+        {{ __('messages.from_all') }}{{ __('messages.quiz') }}
+    </a>
+    <br>
     @foreach($my_books as $book)
         <a href="{{ route('book.index', ['id' => $book->id]) }}">{{ $book->name }}</a> 
         <br>
@@ -23,7 +27,11 @@
     </div>
 @endauth
 <div>
-    <br><strong>みんなの単語帳</strong><br>
+    <br><strong>{{ __('messages.all_books') }}</strong>
+    <a href="{{ route('quiz.question', ['type' => 0]) }}">
+        {{ __('messages.from_all') }}{{ __('messages.quiz') }}
+    </a>
+    <br>
     @foreach($all_books as $book)
         <a href="{{ route('book.index', ['id' => $book->id]) }}">{{ $book->name }}</a>
         {{ __('messages.created_by') }}: 

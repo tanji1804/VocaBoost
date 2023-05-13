@@ -1,8 +1,9 @@
 <?php
 
 return [
-    'again' => 'やり直す',
     'back' => '裏',
+    'again' => 'やり直す',
+    'all_books' => 'みんなの単語帳',
     'book' => '単語帳',
     'book_id' => 'bookID',
     'book_name' => '単語帳の名前',
@@ -16,10 +17,12 @@ return [
     'email' => 'メールアドレス',
     'edit_book' => '単語帳の編集',
     'front' => '表',
+    'from_all' => '全てから',
     'forgot_your_password?' => 'パスワードを忘れた',
     'login' => 'ログイン',
     'logout' => 'ログアウト',
     'logged_in' => 'ログイン完了',
+    'my_books' => '自分の単語帳',
     'name' => '名前',
     'password' => 'パスワード',
     'quiz' => '問題',
