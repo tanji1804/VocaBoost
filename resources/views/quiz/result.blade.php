@@ -21,4 +21,12 @@
     {{ $max_points }}点中
     {{ $points }}点
     <br>
+    @foreach($histories as $history)
+        {{ $history->result }}
+        /
+        {{ $history->max_points }}
+        |
+        {{ $history->created_at->format('Y/m/d') }}
+        <br>
+    @endforeach
 @endsection

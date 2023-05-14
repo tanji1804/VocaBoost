@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('book_id')->constrained('books');
-            $table->bigInteger('point');
-            $table->timestamp('created_at');
+            $table->bigInteger('max_points');
+            $table->bigInteger('result');
+            $table->timestamps();
         });
     }
 

@@ -9,7 +9,7 @@ class QuizResultHistory extends Model
 {
     use HasFactory;
     
-    protected $table = 'quiz_result_historyes';
+    protected $table = 'quiz_result_histories';
     protected $guarded = array('id');
     
     public function book()

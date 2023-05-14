@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Book;
 use App\Models\Card;
-use App\Models\AllCard;
+use App\Models\QuizResultHistory;
 
 class QuizController extends Controller
 {
@@ -48,13 +48,13 @@ class QuizController extends Controller
             $type = $request->type;
             $max_points = $request->max_points; 
             $book = Book::find($request->book_id);
-            $form = $request->all();
             
-            unset($form['book_id'], $form['_token']);
+            
+            $form = $request->all();
+            unset($form['book_id'],$form['max_points'] , $form['_token']);
             
             $chosen_cards = $form;
             $points = 0;
-            $result = [];
             
             foreach($chosen_cards as $ques_id => $cho_id){
                 if($ques_id == $cho_id){
@@ -62,11 +62,21 @@ class QuizController extends Controller
                 }
             }
             
+            $history = new QuizResultHistory;
+            $history->user_id = Auth::id();
+            $history->book_id = $request->book_id;
+            $history->max_points = $request->max_points;
+            $history->result = $points;
+            $history->save();
+            
+            $histories = QuizResultHistory::where('book_id', $request->book_id)->get()->reverse();
+            
             return view('quiz.result', [
                 'book' => $book,
                 'max_points' => $max_points,
                 'type' => $type,
                 'points' => $points,
+                'histories' => $histories,
                 ]);
         }
 
