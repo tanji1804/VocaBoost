@@ -24,6 +24,7 @@ class QuizController extends Controller
                     $question_book = Card::all();
                     break;
                 case 1:
+                    $book = null;
                     $question_book = Card::where('user_id', Auth::id())->get();
                     break;
                 case 2:
@@ -31,11 +32,12 @@ class QuizController extends Controller
                     $question_book = collect($book->cards);
                     break;
             }
-            dd($question_book);
-            $max_points = $book->cards->count();
+            
+            $max_points = count($question_book);
             
             return view('quiz.question', [
                 'book' => $book,
+                'question_book' => $question_book,
                 'max_points' => $max_points,
                 'type' => $type,
             ]);
@@ -43,6 +45,7 @@ class QuizController extends Controller
         
         public function result(Request $request)
         {
+            $type = $request->type;
             $max_points = $request->max_points; 
             $book = Book::find($request->book_id);
             $form = $request->all();
@@ -62,6 +65,7 @@ class QuizController extends Controller
             return view('quiz.result', [
                 'book' => $book,
                 'max_points' => $max_points,
+                'type' => $type,
                 'points' => $points,
                 ]);
         }

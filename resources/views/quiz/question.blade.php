@@ -5,20 +5,28 @@
     @switch($type)
         @case(0)
             {{ __('messages.all_books') }}
+            <form method="POST" action="{{ route('quiz.result', ['max_points' => $max_points,
+                                                                'type' => $type,
+                                                                ]) }}">
             @break
         @case(1)
             {{ __('messages.my_books') }}
+            <form method="POST" action="{{ route('quiz.result', ['max_points' => $max_points,
+                                                                'type' => $type,
+                                                                ]) }}">
             @break
         @case(2)
             <a href="{{ route('book.index', ['id' => $book->id]) }}">{{ $book->name }}</a>
+            <form method="POST" action="{{ route('quiz.result', ['book_id' => $book->id,
+                                                                'max_points' => $max_points,
+                                                                'type' => $type,
+                                                                ]) }}">
             @break
     @endswitch
     {{ __('messages.question_from') }}
     <br>
-    <form method="POST" action="{{ route('quiz.result', ['book_id' => $book->id,
-                                                        'max_points' => $max_points]) }}">
     @csrf
-        @foreach($book->cards->shuffle() as $card)
+        @foreach($question_book->shuffle() as $card)
             ----------------------------
             <br>
             {{ $card->front }} は？ 
