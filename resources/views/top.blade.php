@@ -6,7 +6,7 @@
 @auth
     <strong>{{ __('messages.my_books') }}</strong>
     <a href="{{ route('quiz.question', ['type' => 1]) }}">
-        {{ __('messages.from_all') }}{{ __('messages.quiz') }}
+        {{ __('messages.from_all') }}{{ __('messages.question') }}
     </a>
     <br>
     @foreach($my_books as $book)
@@ -29,13 +29,13 @@
 <div>
     <br><strong>{{ __('messages.all_books') }}</strong>
     <a href="{{ route('quiz.question', ['type' => 0]) }}">
-        {{ __('messages.from_all') }}{{ __('messages.quiz') }}
+        {{ __('messages.from_all') }}{{ __('messages.question') }}
     </a>
     <br>
     @foreach($all_books as $book)
         <a href="{{ route('book.index', ['id' => $book->id]) }}">{{ $book->name }}</a>
         {{ __('messages.created_by') }}: 
-        {{ $book->user_id }}
+        {{ $book->user->name }}
         <br>
     @endforeach
 </div>

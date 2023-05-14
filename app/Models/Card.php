@@ -18,9 +18,9 @@ class Card extends Model
         return $this->belongsTo(Book::class, 'book_id', 'id');
     }
     
-    public function allCard()
+    public function user()
     {
-        return $this->belongsTo(AllCard::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
     
     public function getOtherCards($how_many, $type)
