@@ -77,11 +77,29 @@ class QuizController extends Controller
                                              ->orderBy('created_at', 'desc')
                                              ->get();
             
-            return view('quiz.result', [
-                'book' => $book,
+            return redirect()->route('quiz.result_view', [
+                'book_id' => $book->id,
                 'max_points' => $max_points,
                 'type' => $type,
                 'points' => $points,
+                'histories' => $histories,
+            ]);
+        }
+        
+        public function resultView(Request $request)
+        {
+            $book = Book::find($request->book_id);
+            $histories = QuizResultHistory::where('user_id', Auth::id())
+                                             ->where('type', $request->type)
+                                             ->where('book_id', $request->book_id)
+                                             ->orderBy('created_at', 'desc')
+                                             ->get();
+            
+            return view('quiz.result', [
+                'book' => $book,
+                'max_points' => $request->max_points,
+                'type' => $request->type,
+                'points' => $request->points,
                 'histories' => $histories,
                 ]);
         }

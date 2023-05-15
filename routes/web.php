@@ -38,6 +38,7 @@ use App\Http\Controllers\QuizController;
 Route::controller(QuizController::class)->prefix('quiz')->name('quiz.')->group(function(){
     Route::get('/question', 'question')->name('question');
     Route::post('/result', 'result')->name('result');
+    Route::get('/result', 'resultView')->name('result_view');
 });
 
 // Auth
