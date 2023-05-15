@@ -17,7 +17,7 @@
     <script src="{{ secure_asset('js/app.js') }}" defer></script>
     <script src="{{ secure_asset('js/popup.js') }}"></script>
     <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
-
+    <link rel="shortcut icon" href="/favicon.ico">
 </head>
 <body>
     <div id="app">
