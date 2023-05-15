@@ -70,19 +70,11 @@ class QuizController extends Controller
             $history->result = $points;
             $history->save();
             
-            
-            $histories = QuizResultHistory::where('user_id', Auth::id())
-                                             ->where('type', $type)
-                                             ->where('book_id', $request->book_id)
-                                             ->orderBy('created_at', 'desc')
-                                             ->get();
-            
             return redirect()->route('quiz.result_view', [
                 'book_id' => $book->id,
                 'max_points' => $max_points,
                 'type' => $type,
                 'points' => $points,
-                'histories' => $histories,
             ]);
         }
         
