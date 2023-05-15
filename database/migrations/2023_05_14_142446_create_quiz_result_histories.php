@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('quiz_result_histories', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('book_id')->constrained('books');
+            $table->foreignId('book_id')->nullable()->constrained('books');
+            $table->bigInteger('type');
             $table->bigInteger('max_points');
             $table->bigInteger('result');
             $table->timestamps();

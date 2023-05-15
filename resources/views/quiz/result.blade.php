@@ -6,15 +6,17 @@
         @case(0)
             {{ __('messages.all_books') }}
             {{ __('messages.question_from') }}
+            <a href="{{ route('quiz.question', ['type' => $type]) }}">{{ __('messages.again') }}</a>
             @break
         @case(1)
             {{ __('messages.my_books') }}
             {{ __('messages.question_from') }}
+            <a href="{{ route('quiz.question', ['type' => $type]) }}">{{ __('messages.again') }}</a>
             @break
         @case(2)
             <a href="{{ route('book.index', ['id' => $book->id]) }}">{{ $book->name }}</a>
             {{ __('messages.question_from') }}
-            <a href="{{ route('quiz.question', ['id' => $book->id]) }}">{{ __('messages.again') }}</a>
+            <a href="{{ route('quiz.question', ['id' => $book->id, 'type' => $type]) }}">{{ __('messages.again') }}</a>
             @break
     @endswitch
     <br>
