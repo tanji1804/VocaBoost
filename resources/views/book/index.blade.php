@@ -46,4 +46,12 @@
             <button id="no" onclick="nofunc2()">{{ __('messages.cancel') }}</button>
         </div>
     @endif
+    @foreach($histories as $history)
+        {{ $history->result }}
+        /
+        {{ $history->max_points }}
+        |
+        {{ $history->created_at->format('Y/m/d') }}
+        <br>
+    @endforeach
 @endsection

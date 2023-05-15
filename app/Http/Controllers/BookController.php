@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\Card;
+use App\Models\QuizResultHistory;
 use App\Http\Requests\BookRequest;
 
 
@@ -19,8 +20,15 @@ class BookController extends Controller
         
         $cards = $book->cards;
         $user_id = Auth::id();
+        $histories = QuizResultHistory::where('user_id', Auth::id())
+                                             ->where('type', 2)
+                                             ->where('book_id', $book->id)
+                                             ->orderBy('created_at', 'desc')
+                                             ->get();
         
-        return view('book.index', ['book' => $book, 'user_id' => $user_id, 'cards' => $cards]);
+        return view('book.index', ['book' => $book, 'user_id' => $user_id,
+                                        'cards' => $cards,
+                                        'histories' => $histories]);
     }
     
     // book.create
