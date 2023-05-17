@@ -13,7 +13,18 @@
     <a href="{{ route('book.delete', ['id' => $book->id]) }}">{{ __('messages.delete') }}</a>
     <br>
     @foreach($cards as $card)
-        {{ $card->front }} が {{ $card->back }}
+    
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <p class="title">{{ $card->front }}</p>
+                </div>
+                <div class="flip-card-back">
+                    <p class="title">{{ $card->back }}</p>
+                </div>
+            </div>
+        </div>
+        
         <a href="{{ route('card.delete', ['card_id' => $card->id, 'book_id' => $book->id]) }}">{{ __('messages.delete') }}</a>
             <form method="POST" action="{{ route('card.edit', ['id' => $card->id, 'book_id' => $book->id]) }}">
                 @csrf
