@@ -8,40 +8,47 @@
     <br>
     <a href="{{ route('quiz.question', ['id' => $book->id, 'type' => 2]) }}">{{ __('messages.question') }}</a>
     @if($book->user_id === $user_id)
-        <button onclick="return popup()" >{{ __('messages.edit') }}</button> 
-    @endif
-    <a href="{{ route('book.delete', ['id' => $book->id]) }}">{{ __('messages.delete') }}</a>
-    <br>
-    @foreach($cards as $card)
-    
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <div class="flip-card-front">
-                    <p class="title">{{ $card->front }}</p>
-                </div>
-                <div class="flip-card-back">
-                    <p class="title">{{ $card->back }}</p>
-                </div>
-            </div>
-        </div>
         
-        <a href="{{ route('card.delete', ['card_id' => $card->id, 'book_id' => $book->id]) }}">{{ __('messages.delete') }}</a>
-            <form method="POST" action="{{ route('card.edit', ['id' => $card->id, 'book_id' => $book->id]) }}">
-                @csrf
-                <input type="text" placeholder="{{ __('messages.front') }}" name="front" value="{{ old('front') }}" />
-                <input type="text" placeholder="{{ __('messages.back') }}" name="back" value="{{ old('back') }}" />
-                <input type="submit" value="{{ __('messages.update') }}" />
-            </form>
-    @endforeach
-    @if($book->user_id === $user_id)
-        <div id="popup" style="width: 200px;display: none;padding: 30px 20px;border: 2px solid #000;margin: auto;">
-            <br>
-            <form method="POST" action="{{ route('book.edit', ['id' => $book->id]) }}">
+        <label class="open" for="pop-up1">{{ __('messages.edit') }}</label>
+        <input type="checkbox" id="pop-up1">
+        <div class="overlay">
+        	<div class="window">
+        		<label class="close" for="pop-up1">×</label>
+        		<form method="POST" action="{{ route('book.edit', ['id' => $book->id]) }}">
                 @csrf
                 <input type="text" placeholder="{{ $book->name }}" name="name" value="{{ old('name') }}" />
                 <input type="submit" id="ok" onclick="okfunc()" value="{{ __('messages.update') }}" />
             </form>
-            <button id="no" onclick="nofunc()">{{ __('messages.cancel') }}</button>
+        	</div>
+        </div>
+        
+    @endif
+    <a href="{{ route('book.delete', ['id' => $book->id]) }}">{{ __('messages.delete') }}</a>
+    <br>
+    @foreach($cards as $card)
+        <div class="word_card">
+          <div class="first-content">
+            <span>{{ $card->front }}</span>
+          </div>
+          <div class="second-content">
+            <span>{{ $card->back}}</span>
+          </div>
+        </div>
+        
+        
+        @if($book->user_id === $user_id)
+            <a href="{{ route('card.delete', ['card_id' => $card->id, 'book_id' => $book->id]) }}">{{ __('messages.delete') }}</a>
+                <form method="POST" action="{{ route('card.edit', ['id' => $card->id, 'book_id' => $book->id]) }}">
+                    @csrf
+                    <input type="text" placeholder="{{ __('messages.front') }}" name="front" value="{{ old('front') }}" />
+                    <input type="text" placeholder="{{ __('messages.back') }}" name="back" value="{{ old('back') }}" />
+                    <input type="submit" value="{{ __('messages.update') }}" />
+                </form>
+        @endif
+    @endforeach
+    @if($book->user_id === $user_id)
+        <div id="popup" style="width: 200px;display: none;padding: 30px 20px;border: 2px solid #000;margin: auto;">
+            <br>
         </div>
         <div>
             <input type="button" value="+" name="create_card_button" onclick="return popup2()" />
