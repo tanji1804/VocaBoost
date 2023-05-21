@@ -2,6 +2,7 @@
 
 return [
     'back' => '裏',
+    'admin_page' => '管理者ページ',
     'again' => 'やり直す',
     'all_books' => 'みんなの単語帳',
     'book' => '単語帳',
@@ -28,10 +29,11 @@ return [
     'quiz' => '問題',
     'question' => '出題',
     'question_from' => 'から出題',
-    'user_register' => '新規アカウント登録',
-    'update' => '更新',
     'remember_me' => 'ログイン情報を記憶する',
     'result' => '結果',
     'register' => '登録',
     'top' => 'トップ',
+    'user' => 'ユーザー',
+    'user_register' => '新規アカウント登録',
+    'update' => '更新',
 ];

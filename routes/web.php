@@ -44,5 +44,11 @@ Route::controller(QuizController::class)->prefix('quiz')->name('quiz.')->group(f
 // Auth
 Auth::routes();
 
+// Adomin
+use App\Http\Controllers\AdminController;
+Route::controller(AdminController::class)->middleware(['admin'])->prefix('admin')->group(function () {
+        Route::get('/', 'index')->name('admin.users');     
+    });
+
 // HomeController
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
