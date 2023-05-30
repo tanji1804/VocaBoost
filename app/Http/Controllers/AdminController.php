@@ -18,7 +18,7 @@ class AdminController extends Controller
     {
         $users = User::whereNotIn('id', [Auth::id()])->get();
         
-        return view('admin/users', [
+        return view('admin.users', [
                 'users' => $users,
             ]);
     }
@@ -27,7 +27,7 @@ class AdminController extends Controller
     {
         $books = Book::all();
         
-        return view('admin/books', [
+        return view('admin.books', [
                 'books' => $books,
             ]);
     }
