@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class TopController extends Controller
 {

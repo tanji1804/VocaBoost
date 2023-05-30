@@ -58,7 +58,7 @@
                                     {{ __('messages.login') }}
                                 </button>
 
-                                @if (Route::has('password.request'))
+                                @if (Illuminate\Support\Facades\Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('messages.forgot_your_password?') }}
                                     </a>
@@ -66,6 +66,13 @@
                             </div>
                         </div>
                     </form>
+                    <div class="form-group row mt-2">
+                        <div class="col-md-8 offset-md-4">
+                            <a href="/login/google" class="btn btn-secondary" role="button">
+                                {{ __('messages.login_with_google') }}
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

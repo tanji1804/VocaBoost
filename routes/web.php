@@ -42,7 +42,13 @@ Route::controller(QuizController::class)->prefix('quiz')->name('quiz.')->group(f
 });
 
 // Auth
+use Illuminate\Support\Facades\Auth;
 Auth::routes();
+use App\Http\Controllers\Auth\LoginController;
+Route::controller(LoginController::class)->prefix('login')->name('login.')->group(function(){
+    Route::get('google', 'redirectToGoogle')->name('google.redirect');
+    Route::get('google/callback', 'handleGoogleCallback')->name('google.callback');
+});
 
 // Adomin
 use App\Http\Controllers\AdminController;
