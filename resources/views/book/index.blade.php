@@ -21,9 +21,9 @@
             </form>
         	</div>
         </div>
+    <a href="{{ route('book.delete', ['id' => $book->id]) }}">{{ __('messages.delete') }}</a>
         
     @endif
-    <a href="{{ route('book.delete', ['id' => $book->id]) }}">{{ __('messages.delete') }}</a>
     <br>
     @foreach($cards as $card)
         <div class="word_card">
