@@ -50,10 +50,13 @@ Route::controller(LoginController::class)->prefix('login')->name('login.')->grou
     Route::get('google/callback', 'handleGoogleCallback')->name('google.callback');
 });
 
-// Adomin
+// Admin
 use App\Http\Controllers\AdminController;
-Route::controller(AdminController::class)->middleware(['admin'])->prefix('admin')->group(function () {
-        Route::get('/', 'index')->name('admin.users');     
+Route::controller(AdminController::class)->middleware(['admin'])->prefix('admin')->name('admin.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/users', 'users')->name('users');
+        Route::get('/books', 'books')->name('books');
+        Route::get('/cards', 'cards')->name('cards');
     });
 
 // HomeController
