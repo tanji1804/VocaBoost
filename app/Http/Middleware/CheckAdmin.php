@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class CheckAdmin
 {
@@ -15,7 +17,7 @@ class CheckAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(!$request->user()->isAdmin()){
+        if(!Auth::check() || !Auth::user()->isAdmin()){
             abort(404);
         }
         
