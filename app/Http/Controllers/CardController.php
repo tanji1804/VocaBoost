@@ -76,7 +76,7 @@ class CardController extends Controller
                         ],
                         "image" => [
                             "source" => [
-                                "imageUri" => "https://www.okadori.net/wp-content/uploads/2022/10/tango1.png"
+                                "imageUri" => "https://tangomaker.net/wp-content/uploads/2016/08/tango_eitanngo_chuugaku_03_hukushi.jpg"
                             ]
                         ]
                     ]
