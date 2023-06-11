@@ -37,5 +37,11 @@ return [
         'redirect' => 'https://fcb821b9623b4140acb2988cfbf4f0dc.vfs.cloud9.ap-northeast-1.amazonaws.com/login/google/callback',
         
     ],
+    
+    'google_vision' => [
+        'keyFilePath' => env('GOOGLE_APPLICATION_CREDENTIALS'),
+        'projectId' => env('GOOGLE_CLOUD_PROJECT_ID'),
+    ],
+
 
 ];

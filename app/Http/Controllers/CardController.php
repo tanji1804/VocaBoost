@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Card;
@@ -54,5 +56,48 @@ class CardController extends Controller
         $card = Card::find($request->card_id);
         $card->delete();
         return redirect(route('book.index', ['id' => $request->book_id]));
+    }
+    
+    public function processImage()
+    {
+        [$accessToken] = $this->getAccessToken();
+        
+        // CURLリクエストを実行してJSONレスポンスを取得
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $accessToken,
+            'Content-Type' => 'application/json; charset=utf-8',
+        ])->post('https://vision.googleapis.com/v1/images:annotate', [
+                "requests" => [
+                    [
+                        "features" => [
+                            [
+                                "type" => "TEXT_DETECTION"
+                            ]
+                        ],
+                        "image" => [
+                            "source" => [
+                                "imageUri" => "https://www.okadori.net/wp-content/uploads/2022/10/tango1.png"
+                            ]
+                        ]
+                    ]
+                ]
+            ]);
+
+        // レスポンスのJSONデータを取得
+        $data = $response->json();
+        
+        // Bladeテンプレートにデータを渡して表示
+        return view('card.image_create', ['text' => $data['responses'][0]['fullTextAnnotation']['text']]);
+    }
+    
+    private function getAccessToken()
+    {
+        $output = [];
+        $command = '~/environment/google-cloud-sdk/bin/gcloud auth print-access-token';
+        $code = 0;
+        
+        exec($command, $output);
+        
+        return $output;
     }
 }

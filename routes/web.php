@@ -31,6 +31,7 @@ Route::controller(CardController::class)->prefix('card')->name('card.')->group(f
     Route::post('create', 'create')->name('create');
     Route::post('edit', 'edit')->name('edit');
     Route::get('delete', 'delete')->name('delete');
+    Route::get('process_image', 'processImage')->name('process_image');
 });
 
 // QuizController

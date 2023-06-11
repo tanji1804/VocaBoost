@@ -20,6 +20,7 @@ return [
     'front' => '表',
     'from_all' => '全てから',
     'forgot_your_password?' => 'パスワードを忘れた',
+    'image_create' => '画像から登録',
     'login' => 'ログイン',
     'login_with_google' => 'Googleアカウントでログイン',
     'logout' => 'ログアウト',
