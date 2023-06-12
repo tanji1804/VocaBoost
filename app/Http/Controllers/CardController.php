@@ -76,7 +76,7 @@ class CardController extends Controller
                         ],
                         "image" => [
                             "source" => [
-                                "imageUri" => "https://tangomaker.net/wp-content/uploads/2016/08/tango_eitanngo_chuugaku_03_hukushi.jpg"
+                                "imageUri" => "gs://bucket-warm-lane-387513/IMG_7507.img.PNG"
                             ]
                         ]
                     ]
@@ -85,6 +85,11 @@ class CardController extends Controller
 
         // レスポンスのJSONデータを取得
         $data = $response->json();
+        $textAnnotaions = $data['responses'][0]["textAnnotations"];
+        $texts = [];
+        for($i = 1; $i < count($textAnnotaions); $i++){
+            $texts[] = $textAnnotaions[$i]["description"];
+        }
         
         // Bladeテンプレートにデータを渡して表示
         return view('card.image_create', ['text' => $data['responses'][0]['fullTextAnnotation']['text']]);
