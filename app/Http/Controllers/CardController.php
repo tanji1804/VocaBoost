@@ -60,11 +60,11 @@ class CardController extends Controller
     
     public function processImage()
     {
-        [$accessToken] = $this->getAccessToken();
+        [$access_token] = $this->getAccessToken();
         
         // CURLリクエストを実行してJSONレスポンスを取得
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $accessToken,
+            'Authorization' => 'Bearer ' . $access_token,
             'Content-Type' => 'application/json; charset=utf-8',
         ])->post('https://vision.googleapis.com/v1/images:annotate', [
                 "requests" => [
@@ -85,20 +85,21 @@ class CardController extends Controller
 
         // レスポンスのJSONデータを取得
         $data = $response->json();
-        $textAnnotaions = $data['responses'][0]["textAnnotations"];
+        $text_annotaions = $data['responses'][0]["textAnnotations"];
         $texts = [];
-        for($i = 1; $i < count($textAnnotaions); $i++){
-            $texts[] = $textAnnotaions[$i]["description"];
+        
+        for($i = 1; $i < count($text_annotaions); $i++){
+            $texts[] = $text_annotaions[$i];
         }
         
         // Bladeテンプレートにデータを渡して表示
-        return view('card.image_create', ['text' => $data['responses'][0]['fullTextAnnotation']['text']]);
+        return view('card.image_create', ['coordinates' => $texts]);
     }
     
     private function getAccessToken()
     {
         $output = [];
-        $command = '~/environment/google-cloud-sdk/bin/gcloud auth print-access-token';
+        $command = '~/environment/VocaBoost/google-cloud-sdk/bin/gcloud auth print-access-token';
         $code = 0;
         
         exec($command, $output);
