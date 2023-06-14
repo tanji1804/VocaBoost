@@ -86,20 +86,22 @@ class CardController extends Controller
         // レスポンスのJSONデータを取得
         $data = $response->json();
         $text_annotaions = $data['responses'][0]["textAnnotations"];
-        $texts = [];
+        $coordinates = [];
         
-        for($i = 1; $i < count($text_annotaions); $i++){
-            $texts[] = $text_annotaions[$i];
-        }
+        $coordinates = array_slice($text_annotaions, 1);
+        
+        $coordinates = array_filter($coordinates, function($c) {
+            return isset($c['boundingPoly']['vertices'][0]['y']);
+        });
         
         // Bladeテンプレートにデータを渡して表示
-        return view('card.image_create', ['coordinates' => $texts]);
+        return view('card.image_create', ['coordinates' => $coordinates]);
     }
     
     private function getAccessToken()
     {
         $output = [];
-        $command = '~/environment/VocaBoost/google-cloud-sdk/bin/gcloud auth print-access-token';
+        $command = '~/environment/google-cloud-sdk/bin/gcloud auth print-access-token';
         $code = 0;
         
         exec($command, $output);
