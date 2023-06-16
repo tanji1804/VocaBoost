@@ -13,17 +13,13 @@
         <a href="{{ route('book.index', ['id' => $book->id]) }}">{{ $book->name }}</a> 
         <br>
     @endforeach
-    <div>
-        <input type="button" value="+" name="create_book_button" onclick="return popup()" />
-    </div>
-    <div id="popup" style="width: 200px;display: none;padding: 30px 20px;border: 2px solid #000;margin: auto;">
-        <br>
+    <button popovertarget="create_book">+</button>
+    <div id="create_book" popover>
         <form method="POST" action="{{ route('book.create') }}">
             @csrf
             <input type="text" placeholder="{{ __('messages.book_name') }}" name="name" value="{{ old('name') }}" />
             <input type="submit" id="ok" onclick="okfunc()" value="{{ __('messages.register') }}" />
         </form>
-        <button id="no" onclick="nofunc()">キャンセル</button>
     </div>
 @endauth
 <div>

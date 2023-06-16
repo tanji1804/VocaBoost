@@ -8,24 +8,19 @@
     <br>
     <a href="{{ route('quiz.question', ['id' => $book->id, 'type' => 2]) }}">{{ __('messages.question') }}</a>
     @if($book->user_id === $user_id)
-        
-        <label class="open" for="pop-up1">{{ __('messages.edit') }}</label>
-        <input type="checkbox" id="pop-up1">
-        <div class="overlay">
-        	<div class="window">
-        		<label class="close" for="pop-up1">×</label>
+        <button popovertarget="edit_book">{{ __('messages.edit') }}</button>
+        <div id="edit_book" popover>
         		<form method="POST" action="{{ route('book.edit', ['id' => $book->id]) }}">
-                @csrf
-                <input type="text" placeholder="{{ $book->name }}" name="name" value="{{ old('name') }}" />
-                <input type="submit" id="ok" onclick="okfunc()" value="{{ __('messages.update') }}" />
-            </form>
-        	</div>
+                    @csrf
+                    <input type="text" placeholder="{{ $book->name }}" name="name" value="{{ old('name') }}" />
+                    <input type="submit" id="ok" onclick="okfunc()" value="{{ __('messages.update') }}" />
+                </form>
         </div>
     <a href="{{ route('book.delete', ['id' => $book->id]) }}">{{ __('messages.delete') }}</a>
-        
     @endif
     <br>
     @foreach($cards as $card)
+    ___
         <div class="word_card">
           <div class="first-content">
             <span>{{ $card->front }}</span>
@@ -34,34 +29,31 @@
             <span>{{ $card->back}}</span>
           </div>
         </div>
-        
-        
         @if($book->user_id === $user_id)
             <a href="{{ route('card.delete', ['card_id' => $card->id, 'book_id' => $book->id]) }}">{{ __('messages.delete') }}</a>
+            <button popovertarget="{{ $card->id }}">{{ __('messages.edit') }}</button>
+            <div id="{{ $card->id }}" popover>
                 <form method="POST" action="{{ route('card.edit', ['id' => $card->id, 'book_id' => $book->id]) }}">
                     @csrf
-                    <input type="text" placeholder="{{ __('messages.front') }}" name="front" value="{{ old('front') }}" />
-                    <input type="text" placeholder="{{ __('messages.back') }}" name="back" value="{{ old('back') }}" />
+                    <input type="text" placeholder="{{ $card->front }}" name="front" value="{{ old('front') }}" />
+                    <input type="text" placeholder="{{ $card->back }}" name="back" value="{{ old('back') }}" />
                     <input type="submit" value="{{ __('messages.update') }}" />
                 </form>
+            </div>
         @endif
+    <br>
+    ___
+    <br>
     @endforeach
     @if($book->user_id === $user_id)
-        <div id="popup" style="width: 200px;display: none;padding: 30px 20px;border: 2px solid #000;margin: auto;">
-            <br>
-        </div>
-        <div>
-            <input type="button" value="+" name="create_card_button" onclick="return popup2()" />
-        </div>
-        <div id="popup2" style="width: 200px;display: none;padding: 30px 20px;border: 2px solid #000;margin: auto;">
-            <br>
+        <button popovertarget="create_card">+</button>
+        <div id="create_card" popover>
             <form method="POST" action="{{ route('card.create', ['book_id' => $book->id]) }}">
                 @csrf
                 <input type="text" placeholder="{{ __('messages.front') }}" name="front" value="{{ old('front') }}" />
                 <input type="text" placeholder="{{ __('messages.back') }}" name="back" value="{{ old('back') }}" />
-                <input type="submit" id="ok" onclick="okfunc2()" value="{{ __('messages.register') }}" />
+                <input type="submit" value="{{ __('messages.register') }}" />
             </form>
-            <button id="no" onclick="nofunc2()">{{ __('messages.cancel') }}</button>
         </div>
     @endif
     @foreach($histories as $history)
