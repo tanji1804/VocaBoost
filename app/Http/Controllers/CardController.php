@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Card;
 use App\Models\Book;
@@ -58,8 +59,12 @@ class CardController extends Controller
         return redirect(route('book.index', ['id' => $request->book_id]));
     }
     
-    public function processImage()
+    public function processImage(Request $request)
     {
+        $img_type = $request->img_data->getMimeType();
+        $img_contents = $request->img_data->get();
+        $img_data = base64_encode($img_contents);
+        
         [$access_token] = $this->getAccessToken();
         
         // CURLリクエストを実行してJSONレスポンスを取得
@@ -75,9 +80,7 @@ class CardController extends Controller
                             ]
                         ],
                         "image" => [
-                            "source" => [
-                                "imageUri" => "gs://bucket-warm-lane-387513/IMG_7507.img.PNG"
-                            ]
+                            "content" => $img_data
                         ]
                     ]
                 ]
@@ -95,7 +98,10 @@ class CardController extends Controller
         });
         
         // Bladeテンプレートにデータを渡して表示
-        return view('card.image_create', ['coordinates' => $coordinates]);
+        return view('card.image_create', ['coordinates' => $coordinates,
+                                            'img_data' => $img_data,
+                                            'img_type' => $img_type,
+                                            ]);
     }
     
     private function getAccessToken()

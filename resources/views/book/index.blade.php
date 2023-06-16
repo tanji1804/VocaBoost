@@ -54,6 +54,14 @@
                 <input type="text" placeholder="{{ __('messages.back') }}" name="back" value="{{ old('back') }}" />
                 <input type="submit" value="{{ __('messages.register') }}" />
             </form>
+            <br>
+            or
+            <br>
+            <form method="POST" action="{{ route('card.process_image') }}" enctype="multipart/form-data">
+                @csrf
+                <input type="file" name="img_data" accept=".jpeg, .png, .gif, .bmp, .webp, .raw, .ico, .pdf, .tiff">
+                <input type="submit" value="{{ __('messages.submit') }}">
+            </form>
         </div>
     @endif
     @foreach($histories as $history)
