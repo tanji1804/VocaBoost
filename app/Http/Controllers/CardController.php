@@ -15,15 +15,27 @@ class CardController extends Controller
     // card.create
     public function create(CardRequest $request)
     {
-        $card = new Card;
         $book = Book::find($request->book_id);
-        $form = $request->all();
-        $form['user_id'] = Auth::id();
         
+        $form = $request->all();
+        $book_id = intval($form['book_id']);
+        $user_id = Auth::id();
         unset($form['_token']);
         
-        $card->fill($form);
-        $card->save();
+        $counter = count($form['front']);
+        for($i = 0; $i < $counter; $i++){
+            $input = [
+                'front' => $form['front'][$i],
+                'back' => $form['back'][$i],
+                'book_id' => $book_id,
+                'user_id' => $user_id,
+            ];
+            
+            $card = new Card;
+            $card->fill($input);
+            $card->save();
+        }
+        
         
         return redirect(route('book.index', ['id' => $book->id]));
     }

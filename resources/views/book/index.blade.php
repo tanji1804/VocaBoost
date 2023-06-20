@@ -50,8 +50,8 @@
         <div id="create_card" popover>
             <form method="POST" action="{{ route('card.create', ['book_id' => $book->id]) }}">
                 @csrf
-                <input type="text" placeholder="{{ __('messages.front') }}" name="front" value="{{ old('front') }}" />
-                <input type="text" placeholder="{{ __('messages.back') }}" name="back" value="{{ old('back') }}" />
+                <input type="text" placeholder="{{ __('messages.front') }}" name="front[]" value="{{ old('front') }}" />
+                <input type="text" placeholder="{{ __('messages.back') }}" name="back[]" value="{{ old('back') }}" />
                 <input type="submit" value="{{ __('messages.register') }}" />
             </form>
             <br>
