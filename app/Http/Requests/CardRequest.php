@@ -13,12 +13,25 @@ class CardRequest extends FormRequest
      */
     public function prepareForValidation()
     {
-        if (!$this->filled('front')) {
-            $this->merge(['front' => 'untitled']);
+        $front = $this->input('front');
+        $back = $this->input('back');
+        
+        foreach($front as $key => $text){
+            if($text === null || $text === ''){
+                $front[$key] = 'untitled';
+            }
         }
-        if(!$this->filled('back')){
-            $this->merge(['back' => 'untitled']);
+        
+        foreach($back as $key => $text){
+            if($text === null || $text === ''){
+                $back[$key] = 'untitled';
+            }
         }
+        
+        $this->merge([
+            'front' => $front,
+            'back' => $back,
+        ]);
     }
 
     /**
