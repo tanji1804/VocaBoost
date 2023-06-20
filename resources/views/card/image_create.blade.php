@@ -14,20 +14,19 @@
                     @endforeach
             </div>
             <div class="col">
-                <button class="w-25">{{ __('messages.add_input') }}</button>
+                <button class="w-25" id="add-button">{{ __('messages.add_input') }}</button>
                 <form method="POST" action="{{ route('card.create', ['book_id' => $book_id]) }}">
                     @csrf
-                        <div class="card w-auto p3">
-                            <input type="text" class="form-control" placeholder="{{ __('messages.front') }}" name="front" value="{{ old('front') }}" />
-                            <input type="text" class="form-control" placeholder="{{ __('messages.back') }}" name="back" value="{{ old('back') }}" />
+                    <div id="input-fields">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="{{ __('messages.front') }}" name="front[]" value="{{ old('front.0') }}" />
+                            <input type="text" class="form-control" placeholder="{{ __('messages.back') }}" name="back[]" value="{{ old('back.0') }}" />
                         </div>
-                        <div class="card w-auto p3">
-                            <input type="text" class="form-control" placeholder="{{ __('messages.front') }}" name="front" value="{{ old('front') }}" />
-                            <input type="text" class="form-control" placeholder="{{ __('messages.back') }}" name="back" value="{{ old('back') }}" />
-                        </div>
-                <input type="submit" value="{{ __('messages.register') }}" />
+                    </div>
+                    <input type="submit" value="{{ __('messages.register') }}" />
                 </form>
             </div>
         </div>
     </div>
+    <script src="{{ asset('/js/add-btn.js') }}"></script>
 @endsection
