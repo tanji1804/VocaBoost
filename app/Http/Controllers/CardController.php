@@ -96,11 +96,14 @@ class CardController extends Controller
             return isset($c['boundingPoly']['vertices'][0]['y']);
         });
         
-        // Bladeテンプレートにデータを渡して表示
-        return view('card.image_create', ['coordinates' => $coordinates,
-                                            'img_data' => $img_data,
-                                            'img_type' => $img_type,
-                                            ]);
+        $book_id = $request->book_id;
+        
+        return view('card.image_create', [
+            'coordinates' => $coordinates,
+            'img_data' => $img_data,
+            'img_type' => $img_type,
+            'book_id' => $book_id,
+        ]);
     }
     
     private function getAccessToken()

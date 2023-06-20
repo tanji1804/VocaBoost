@@ -1,10 +1,11 @@
 <?php
 
 return [
-    'back' => '裏',
+    'add_input' => '入力を増やす',
     'admin_page' => '管理者ページ',
     'again' => 'やり直す',
     'all_books' => 'みんなの単語帳',
+    'back' => '裏',
     'book' => '単語帳',
     'book_id' => 'bookID',
     'book_name' => '単語帳の名前',

@@ -57,9 +57,9 @@
             <br>
             or
             <br>
-            <form method="POST" action="{{ route('card.process_image') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('card.process_image', ['book_id' => $book->id]) }}" enctype="multipart/form-data">
                 @csrf
-                <input type="file" name="img_data" accept=".jpeg, .png, .gif, .bmp, .webp, .raw, .ico, .pdf, .tiff">
+                <input type="file" class="form-control" name="img_data" accept=".jpeg, .png, .gif, .bmp, .webp, .raw, .ico, .pdf, .tiff">
                 <input type="submit" value="{{ __('messages.submit') }}">
             </form>
         </div>
