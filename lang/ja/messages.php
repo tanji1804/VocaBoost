@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'add' => '追加',
     'add_input' => '入力を増やす',
     'admin_page' => '管理者ページ',
     'again' => 'やり直す',

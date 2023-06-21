@@ -1,0 +1,9 @@
+#create_book::backdrop {
+  backdrop-filter: blur(2px);
+}
+
+#create_book {
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    width: 30%;
+}
