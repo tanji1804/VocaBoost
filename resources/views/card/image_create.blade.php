@@ -14,7 +14,8 @@
                     @endforeach
             </div>
             <div class="col">
-                <button class="w-25" id="add-button">{{ __('messages.add_input') }}</button>
+                <p>{{ __('messages.copy_paste') }}</p>
+                <button class="btn btn-outline-secondary" id="add-button">{{ __('messages.add') }}</button>
                 <form method="POST" action="{{ route('card.create', ['book_id' => $book_id]) }}">
                     @csrf
                     <div id="input-fields">
@@ -23,7 +24,7 @@
                             <input type="text" class="form-control" placeholder="{{ __('messages.back') }}" name="back[]" value="{{ old('back.0') }}" />
                         </div>
                     </div>
-                    <input type="submit" value="{{ __('messages.register') }}" />
+                    <input type="submit" class="btn btn-outline-primary" value="{{ __('messages.register') }}" />
                 </form>
             </div>
         </div>

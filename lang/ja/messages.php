@@ -12,6 +12,7 @@ return [
     'book_name' => '単語帳の名前',
     'created_by' => '作成者',
     'confirm_password' => 'パスワードの確認',
+    'copy_paste' => 'コピー＆ペーストで入力',
     'create_book' => '単語帳登録',
     'cancel' => 'キャンセル',
     'delete' => '削除',
