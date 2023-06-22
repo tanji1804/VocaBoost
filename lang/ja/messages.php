@@ -37,6 +37,7 @@ return [
     'result' => '結果',
     'register' => '登録',
     'register_with_google' => 'Googleアカウントで登録',
+    'score_history' => '得点履歴',
     'submit' => '送信',
     'top' => 'トップ',
     'user' => 'ユーザー',

@@ -37,13 +37,13 @@
         </div>
     </div>
     
-    <div id="create_book" popover>
-        <button class="btn-close" popovertarget="create_book" popovertargetaction="hide"></button>
+    <div id="create_book" class="blur" popover>
+        <button class="btn-close" popovertarget="blur" popovertargetaction="hide"></button>
         <form method="POST" action="{{ route('book.create') }}">
             @csrf
             <div class="input-group p-2">
                 <input type="text" class="form-control" placeholder="{{ __('messages.book_name') }}" name="name" value="{{ old('name') }}" />
-                <input type="submit" class="btn btn-outline-secondary" value="{{ __('messages.register') }}" />
+                <input type="submit" class="btn btn-outline-primary" value="{{ __('messages.register') }}" />
             </div>
         </form>
     </div>

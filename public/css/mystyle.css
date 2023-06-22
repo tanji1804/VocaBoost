@@ -1,8 +1,8 @@
-#create_book::backdrop {
+.blur::backdrop {
   backdrop-filter: blur(2px);
 }
 
-#create_book {
+.blur {
     border: 2px solid #ddd;
     border-radius: 10px;
     width: 30%;
