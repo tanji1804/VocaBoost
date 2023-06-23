@@ -38,7 +38,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        <li class="nav-item">
+                            <a href="{{ url('/') }}" class="nav-link">{{ __('messages.top') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            @if(Illuminate\Support\Facades\Auth::user())
+                                @if(Illuminate\Support\Facades\Auth::user()->role === 1)
+                                    <a href="{{ url('admin') }}" class="nav-link">{{ __('messages.admin_page') }}</a>
+                                @endif
+                            @endif
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
