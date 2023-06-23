@@ -70,12 +70,20 @@ class QuizController extends Controller
             $history->result = $points;
             $history->save();
             
-            return redirect()->route('quiz.result_view', [
-                'book_id' => $book->id,
-                'max_points' => $max_points,
-                'type' => $type,
-                'points' => $points,
-            ]);
+            if($book !== null){
+                return redirect()->route('quiz.result_view', [
+                    'book_id' => $book->id,
+                    'max_points' => $max_points,
+                    'type' => $type,
+                    'points' => $points,
+                ]);
+            }elseif($book === null){
+                return redirect()->route('quiz.result_view', [
+                    'max_points' => $max_points,
+                    'type' => $type,
+                    'points' => $points,
+                ]);
+            }
         }
         
         public function resultView(Request $request)
