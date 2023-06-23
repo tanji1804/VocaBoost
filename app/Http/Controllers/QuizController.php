@@ -62,13 +62,15 @@ class QuizController extends Controller
                 }
             }
             
-            $history = new QuizResultHistory;
-            $history->user_id = Auth::id();
-            $history->book_id = $request->book_id;
-            $history->type = $type;
-            $history->max_points = $request->max_points;
-            $history->result = $points;
-            $history->save();
+            if(Auth::check()){
+                $history = new QuizResultHistory;
+                $history->user_id = Auth::id();
+                $history->book_id = $request->book_id;
+                $history->type = $type;
+                $history->max_points = $request->max_points;
+                $history->result = $points;
+                $history->save();
+            }
             
             if($book !== null){
                 return redirect()->route('quiz.result_view', [
