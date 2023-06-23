@@ -7,13 +7,13 @@
             <div class="card-header">
                 @switch($type)
                     @case(0)
-                        {{ __('messages.all_books') }}
+                        <p class="h2">{{ __('messages.all_books') }}</p>
                         <form method="POST" action="{{ route('quiz.result', ['max_points' => $max_points,
                                                                             'type' => $type,
                                                                             ]) }}">
                         @break
                     @case(1)
-                        {{ __('messages.my_books') }}
+                        <p class="h2">{{ __('messages.my_books') }}</p>
                         <form method="POST" action="{{ route('quiz.result', ['max_points' => $max_points,
                                                                             'type' => $type,
                                                                             ]) }}">
