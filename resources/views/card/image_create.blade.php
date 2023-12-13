@@ -9,7 +9,7 @@
                     <!-- 重ねる要素のコンテンツ -->
                     @foreach ($coordinates as $coordinate)
                         <div style="position: absolute; left: {{ $coordinate['boundingPoly']['vertices'][0]['x'] }}px; top: {{ $coordinate['boundingPoly']['vertices'][0]['y'] }}px;">
-                            <h4 style="min-width: 100%; font-size: 15px; border: red solid 1px; color: transparent;">{{ $coordinate['description'] }}</h4>
+                            <p style="min-width: 100%; font-size: 15px;  color: red;">{{ $coordinate['description'] }}</p>
                         </div>
                     @endforeach
             </div>
@@ -20,8 +20,8 @@
                     @csrf
                     <div id="input-fields">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="{{ __('messages.front') }}" name="front[]" value="{{ old('front.0') }}" />
-                            <input type="text" class="form-control" placeholder="{{ __('messages.back') }}" name="back[]" value="{{ old('back.0') }}" />
+                            <input type="text" class="form-control" placeholder="{{ __('messages.front') }}" name="front[]" />
+                            <input type="text" class="form-control" placeholder="{{ __('messages.back') }}" name="back[]"  />
                         </div>
                     </div>
                     <input type="submit" class="btn btn-outline-primary" value="{{ __('messages.register') }}" />

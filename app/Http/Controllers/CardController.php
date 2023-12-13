@@ -121,7 +121,7 @@ class CardController extends Controller
     private function getAccessToken()
     {
         $output = [];
-        $command = '~/environment/google-cloud-sdk/bin/gcloud auth print-access-token';
+        $command = '/home/ec2-user//google-cloud-sdk/bin/gcloud auth print-access-token';
         $code = 0;
         
         exec($command, $output);
